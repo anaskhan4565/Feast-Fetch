@@ -1,0 +1,262 @@
+@page
+@model ArchitectureModel
+@{
+    ViewData["Title"] = "Architecture";
+}
+
+<div class="page-header bg-gradient text-white py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">
+            <i class="bi bi-diagram-3 me-3"></i>System Architecture
+        </h1>
+        <p class="lead">Feast Fetch - Cloud-Native Restaurant Ordering System</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row g-4">
+        <!-- Architecture Overview -->
+        <div class="col-lg-12">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h4 mb-0"><i class="bi bi-diagram-2 me-2"></i>Architecture Overview</h2>
+                </div>
+                <div class="card-body p-4">
+                    <p class="lead">
+                        Feast Fetch follows a modern <strong>three-tier cloud-native architecture</strong> deployed entirely on Microsoft Azure, 
+                        ensuring scalability, reliability, and maintainability.
+                    </p>
+                    <p>
+                        Our architecture is designed with microservices principles, separating concerns into distinct layers that can scale 
+                        independently based on demand. The system leverages Azure's Platform-as-a-Service (PaaS) offerings to minimize 
+                        operational overhead while maximizing performance and security.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Architecture Diagram -->
+        <div class="col-lg-12">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-info text-white">
+                    <h2 class="h4 mb-0"><i class="bi bi-bricks me-2"></i>Architecture Layers</h2>
+                </div>
+                <div class="card-body p-4">
+                    <div class="architecture-diagram">
+                        <div class="arch-layer mb-4 p-4 bg-light rounded">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="badge bg-primary fs-5 me-3" style="width: 50px; height: 50px; padding-top: 12px;">
+                                    <i class="bi bi-display"></i>
+                                </div>
+                                <div>
+                                    <h3 class="h5 mb-0">Presentation Layer</h3>
+                                    <small class="text-muted">User Interface & Client Applications</small>
+                                </div>
+                            </div>
+                            <p class="mb-2">
+                                <strong>Components:</strong> Responsive Web Application (ASP.NET Core MVC/Blazor), Mobile Apps (Progressive Web App)
+                            </p>
+                            <p class="mb-2">
+                                <strong>Technology Stack:</strong> HTML5, CSS3, Bootstrap 5, JavaScript, Blazor WebAssembly
+                            </p>
+                            <p class="mb-0">
+                                <strong>Responsibilities:</strong> User authentication UI, menu browsing, order placement, payment interface, 
+                                order tracking, restaurant management dashboard
+                            </p>
+                        </div>
+
+                        <div class="text-center mb-4">
+                            <i class="bi bi-arrow-down-circle fs-2 text-primary"></i>
+                        </div>
+
+                        <div class="arch-layer mb-4 p-4 bg-light rounded">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="badge bg-success fs-5 me-3" style="width: 50px; height: 50px; padding-top: 12px;">
+                                    <i class="bi bi-gear"></i>
+                                </div>
+                                <div>
+                                    <h3 class="h5 mb-0">Business Logic Layer</h3>
+                                    <small class="text-muted">Application Services & APIs</small>
+                                </div>
+                            </div>
+                            <p class="mb-2">
+                                <strong>Components:</strong> RESTful API Services, Authentication Service, Order Management Service, 
+                                Payment Processing Service, Notification Service
+                            </p>
+                            <p class="mb-2">
+                                <strong>Technology Stack:</strong> ASP.NET Core Web API 8.0, Entity Framework Core, Azure Functions
+                            </p>
+                            <p class="mb-0">
+                                <strong>Responsibilities:</strong> Business rule enforcement, data validation, order processing logic, 
+                                payment integration, real-time notifications, authentication & authorization (OAuth 2.0, JWT)
+                            </p>
+                        </div>
+
+                        <div class="text-center mb-4">
+                            <i class="bi bi-arrow-down-circle fs-2 text-success"></i>
+                        </div>
+
+                        <div class="arch-layer mb-4 p-4 bg-light rounded">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="badge bg-warning fs-5 me-3" style="width: 50px; height: 50px; padding-top: 12px;">
+                                    <i class="bi bi-database"></i>
+                                </div>
+                                <div>
+                                    <h3 class="h5 mb-0">Data Layer</h3>
+                                    <small class="text-muted">Data Storage & Management</small>
+                                </div>
+                            </div>
+                            <p class="mb-2">
+                                <strong>Components:</strong> Azure SQL Database (relational data), Azure Blob Storage (images, documents), 
+                                Azure Cache for Redis (session & caching)
+                            </p>
+                            <p class="mb-2">
+                                <strong>Technology Stack:</strong> Azure SQL Database, Entity Framework Core, Azure Blob Storage SDK
+                            </p>
+                            <p class="mb-0">
+                                <strong>Responsibilities:</strong> Persistent data storage, data retrieval, transaction management, 
+                                image storage for menu items, caching for performance optimization
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Architectural Patterns -->
+        <div class="col-lg-12">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-success text-white">
+                    <h2 class="h4 mb-0"><i class="bi bi-puzzle me-2"></i>Architectural Patterns & Principles</h2>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="pattern-box border rounded p-3 h-100">
+                                <h5><i class="bi bi-layers text-primary"></i> MVC Pattern</h5>
+                                <p class="small">
+                                    Model-View-Controller separation ensures clean code organization and maintainability. 
+                                    Models represent data entities, Views handle presentation, Controllers manage user input.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="pattern-box border rounded p-3 h-100">
+                                <h5><i class="bi bi-box text-success"></i> Repository Pattern</h5>
+                                <p class="small">
+                                    Abstracts data access logic, providing a collection-like interface for accessing domain objects. 
+                                    Enables easier testing and swapping of data sources.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="pattern-box border rounded p-3 h-100">
+                                <h5><i class="bi bi-plugin text-info"></i> Dependency Injection</h5>
+                                <p class="small">
+                                    Built-in .NET Core DI container manages service lifetimes and dependencies, 
+                                    promoting loose coupling and testability throughout the application.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="pattern-box border rounded p-3 h-100">
+                                <h5><i class="bi bi-activity text-warning"></i> RESTful API Design</h5>
+                                <p class="small">
+                                    Stateless API design following REST principles with proper HTTP verbs, status codes, 
+                                    and resource-based URLs for clean client-server communication.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Flow -->
+        <div class="col-lg-12">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-danger text-white">
+                    <h2 class="h4 mb-0"><i class="bi bi-arrow-left-right me-2"></i>Data Flow Example: Order Placement</h2>
+                </div>
+                <div class="card-body p-4">
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">User Interaction</div>
+                                Customer selects items, customizes order, and clicks "Place Order" on the web interface
+                            </div>
+                            <span class="badge bg-primary rounded-pill">Client</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">API Request</div>
+                                Frontend sends HTTPS POST request to /api/orders with order details and authentication token
+                            </div>
+                            <span class="badge bg-info rounded-pill">Transport</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Authentication & Validation</div>
+                                API Gateway validates JWT token, Order Controller validates request data
+                            </div>
+                            <span class="badge bg-success rounded-pill">API</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Business Logic Processing</div>
+                                Order Service calculates totals, checks inventory, applies discounts, initiates payment
+                            </div>
+                            <span class="badge bg-warning rounded-pill">Business</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Data Persistence</div>
+                                Repository saves order to Azure SQL Database, returns order confirmation
+                            </div>
+                            <span class="badge bg-danger rounded-pill">Data</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Notification & Response</div>
+                                System sends confirmation email/SMS, API returns order ID and status to client
+                            </div>
+                            <span class="badge bg-secondary rounded-pill">Response</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Architecture -->
+        <div class="col-lg-12">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-secondary text-white">
+                    <h2 class="h4 mb-0"><i class="bi bi-shield-lock me-2"></i>Security Architecture</h2>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="security-item p-3 border rounded">
+                                <h6><i class="bi bi-key text-primary"></i> Authentication</h6>
+                                <p class="small mb-0">Azure AD B2C integration, JWT tokens, OAuth 2.0, Multi-factor authentication</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="security-item p-3 border rounded">
+                                <h6><i class="bi bi-lock text-success"></i> Authorization</h6>
+                                <p class="small mb-0">Role-based access control (RBAC), Claims-based authorization, API key management</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="security-item p-3 border rounded">
+                                <h6><i class="bi bi-shield-check text-info"></i> Data Protection</h6>
+                                <p class="small mb-0">TLS 1.3 encryption, Data encryption at rest, Azure Key Vault for secrets</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

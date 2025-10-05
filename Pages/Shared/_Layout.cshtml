@@ -37,22 +37,28 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="/">
-                            <i class="bi bi-house-door"></i>Introduction
+                            <i class="bi bi-house-door"></i>Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Architecture">
-                            <i class="bi bi-diagram-3"></i>Architecture
+                        <a class="nav-link" href="/Restaurants">
+                            <i class="bi bi-shop"></i>Restaurants
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/AzureServices">
-                            <i class="bi bi-cloud"></i>Azure Services
+                        <a class="nav-link" href="/Menu">
+                            <i class="bi bi-card-list"></i>Menu
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Features">
-                            <i class="bi bi-star"></i>Features
+                        <a class="nav-link" href="/Orders">
+                            <i class="bi bi-box-seam"></i>Orders
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="/Cart">
+                            <i class="bi bi-cart3"></i>Cart
+                            <span class="nav-cart-badge" id="navCartCount" style="display: none;">0</span>
                         </a>
                     </li>
                 </ul>
@@ -67,47 +73,136 @@
 
     <!-- Modern Footer with Gradient -->
     <footer class="footer text-white">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-md-12 mb-3">
-                    <h5 class="fw-bold">Feast Fetch</h5>
-                    <p class="mb-2">Your Premier Cloud-Based Restaurant Ordering System</p>
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="bi bi-shop-window me-2"></i>Feast Fetch
+                    </h5>
+                    <p class="text-white-50">Your Premier Cloud-Based Restaurant Ordering System. Order delicious food from your favorite restaurants with just a few clicks.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 mb-3">
+                <div class="col-lg-2 col-md-3 mb-4">
                     <h6 class="text-uppercase fw-bold mb-3">Quick Links</h6>
                     <ul class="list-unstyled">
-                        <li><a href="/" class="text-white-50 text-decoration-none">Introduction</a></li>
-                        <li><a href="/Architecture" class="text-white-50 text-decoration-none">Architecture</a></li>
-                        <li><a href="/AzureServices" class="text-white-50 text-decoration-none">Azure Services</a></li>
-                        <li><a href="/Features" class="text-white-50 text-decoration-none">Features</a></li>
+                        <li><a href="/" class="text-white-50 text-decoration-none">Home</a></li>
+                        <li><a href="/Restaurants" class="text-white-50 text-decoration-none">Restaurants</a></li>
+                        <li><a href="/Menu" class="text-white-50 text-decoration-none">Menu</a></li>
+                        <li><a href="/Orders" class="text-white-50 text-decoration-none">Orders</a></li>
+                        <li><a href="/Cart" class="text-white-50 text-decoration-none">Cart</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <h6 class="text-uppercase fw-bold mb-3">Technology</h6>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-3">Technology Stack</h6>
                     <ul class="list-unstyled">
-                        <li class="text-white-50">ASP.NET Core 8.0</li>
-                        <li class="text-white-50">Microsoft Azure</li>
-                        <li class="text-white-50">Bootstrap 5</li>
-                        <li class="text-white-50">Glassmorphism UI</li>
+                        <li class="text-white-50"><i class="bi bi-check-circle me-1"></i> ASP.NET Core 8.0</li>
+                        <li class="text-white-50"><i class="bi bi-check-circle me-1"></i> Microsoft Azure</li>
+                        <li class="text-white-50"><i class="bi bi-check-circle me-1"></i> Bootstrap 5</li>
+                        <li class="text-white-50"><i class="bi bi-check-circle me-1"></i> Modern UI/UX</li>
                     </ul>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <h6 class="text-uppercase fw-bold mb-3">Project Info</h6>
+                <div class="col-lg-3 col-md-5 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-3">Contact Info</h6>
                     <ul class="list-unstyled">
-                        <li class="text-white-50">Cloud Computing Course</li>
-                        <li class="text-white-50">Fall 2025 Semester</li>
-                        <li class="text-white-50">Azure App Service</li>
-                        <li class="text-white-50">.NET 8.0 LTS</li>
+                        <li class="text-white-50 mb-2">
+                            <i class="bi bi-envelope me-2"></i>
+                            support@feastfetch.com
+                        </li>
+                        <li class="text-white-50 mb-2">
+                            <i class="bi bi-telephone me-2"></i>
+                            +1 (555) 123-4567
+                        </li>
+                        <li class="text-white-50 mb-2">
+                            <i class="bi bi-geo-alt me-2"></i>
+                            123 Cloud Street, Tech City
+                        </li>
                     </ul>
                 </div>
             </div>
+            
             <hr class="bg-white opacity-25 my-4">
-            <div class="row">
+            
+            <!-- Team Information -->
+            <div class="row mb-4">
                 <div class="col-12">
-                    <p class="mb-1 fw-bold">&copy; 2025 Feast Fetch - Restaurant Ordering System</p>
-                    <p class="mb-0 small opacity-75">Built with <i class="bi bi-heart-fill text-danger"></i> for Cloud Computing Assignment</p>
+                    <div class="team-section">
+                        <h6 class="text-uppercase fw-bold mb-3 text-center">
+                            <i class="bi bi-people-fill me-2"></i>Development Team
+                        </h6>
+                        <div class="team-info">
+                            <div class="team-lead mb-3 text-center">
+                                <div class="badge bg-primary px-3 py-2 mb-2">
+                                    <i class="bi bi-person-badge me-1"></i>Project Lead
+                                </div>
+                                <p class="mb-0 text-white fw-bold">Asfandyar Khanzada</p>
+                                <p class="mb-0 text-white-50 small">22k-4626</p>
+                            </div>
+                            <div class="team-members">
+                                <div class="row g-2 justify-content-center">
+                                    <div class="col-lg-2 col-md-4 col-sm-6">
+                                        <div class="team-member-card">
+                                            <i class="bi bi-person-circle"></i>
+                                            <p class="mb-0 fw-bold">Anas Ashfaq</p>
+                                            <small class="text-white-50">22k-4310</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-sm-6">
+                                        <div class="team-member-card">
+                                            <i class="bi bi-person-circle"></i>
+                                            <p class="mb-0 fw-bold">Asim Ali</p>
+                                            <small class="text-white-50">22k-4161</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-sm-6">
+                                        <div class="team-member-card">
+                                            <i class="bi bi-person-circle"></i>
+                                            <p class="mb-0 fw-bold">Anas Khan</p>
+                                            <small class="text-white-50">22k-4483</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-sm-6">
+                                        <div class="team-member-card">
+                                            <i class="bi bi-person-circle"></i>
+                                            <p class="mb-0 fw-bold">Mohammad Anas</p>
+                                            <small class="text-white-50">22k-4548</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-sm-6">
+                                        <div class="team-member-card">
+                                            <i class="bi bi-person-circle"></i>
+                                            <p class="mb-0 fw-bold">Ahsan Ali</p>
+                                            <small class="text-white-50">22k-4176</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-sm-6">
+                                        <div class="team-member-card">
+                                            <i class="bi bi-person-circle"></i>
+                                            <p class="mb-0 fw-bold">Zain ul Abideen</p>
+                                            <small class="text-white-50">22k-4476</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="bg-white opacity-25 my-4">
+            
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-1 fw-bold">
+                        &copy; 2025 Feast Fetch - Restaurant Ordering System
+                    </p>
+                    <p class="mb-0 small opacity-75">
+                        Built with <i class="bi bi-heart-fill text-danger"></i> for Cloud Computing Course • Fall 2025 Semester
+                    </p>
                 </div>
             </div>
         </div>
@@ -150,12 +245,39 @@
             });
         });
         
+        // Update cart count in navigation
+        function updateNavCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const navCartBadge = document.getElementById('navCartCount');
+            
+            if (navCartBadge) {
+                navCartBadge.textContent = count;
+                if (count > 0) {
+                    navCartBadge.style.display = 'flex';
+                } else {
+                    navCartBadge.style.display = 'none';
+                }
+            }
+        }
+        
+        // Update on page load
+        updateNavCartCount();
+        
+        // Update when storage changes
+        window.addEventListener('storage', updateNavCartCount);
+        
+        // Update periodically (for same-page updates)
+        setInterval(updateNavCartCount, 1000);
+        
         // Add active class to current nav link
         const currentLocation = window.location.pathname;
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
-            if (link.getAttribute('href') === currentLocation || 
-                (currentLocation === '/' && link.getAttribute('href') === '/')) {
+            const href = link.getAttribute('href');
+            if (href === currentLocation || 
+                (currentLocation === '/' && href === '/') ||
+                (currentLocation.startsWith(href) && href !== '/')) {
                 link.classList.add('active');
             }
         });
@@ -182,10 +304,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.card');
             cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(card);
+                if (!card.style.opacity) {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)';
+                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    observer.observe(card);
+                }
             });
         });
         

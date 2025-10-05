@@ -1,257 +1,306 @@
 @page
 @model IndexModel
 @{
-    ViewData["Title"] = "Introduction";
+    ViewData["Title"] = "Home";
 }
 
-<div class="hero-section">
+<!-- Hero Section with Restaurant Ordering Theme -->
+<div class="restaurant-hero-section">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-10 mx-auto text-center">
-                <h1 class="display-3 fw-bold mb-4">
-                    <i class="bi bi-shop-window"></i>
+                <div class="hero-icon-wrapper mb-4">
+                    <i class="bi bi-shop-window hero-icon"></i>
+                </div>
+                <h1 class="display-2 fw-bold mb-4 hero-title">
                     Feast Fetch
                 </h1>
-                <p class="lead mb-4 fs-3">Your Premier Cloud-Based Restaurant Ordering System</p>
-                <div class="badge fs-6 mb-4">Cloud Computing Semester Project • Fall 2025</div>
-                <div class="mt-4">
-                    <a href="#features" class="btn btn-light btn-lg px-5 py-3 rounded-pill me-3 shadow">
-                        <i class="bi bi-rocket-takeoff me-2"></i>Explore Features
+                <p class="lead mb-4 fs-2 hero-subtitle">Delicious Food, Delivered to Your Doorstep</p>
+                <p class="fs-5 mb-5 hero-description">Order from your favorite restaurants with just a few clicks</p>
+                <div class="mt-4 hero-buttons">
+                    <a href="/Restaurants" class="btn btn-hero-primary btn-lg px-5 py-3 rounded-pill me-3 shadow-lg">
+                        <i class="bi bi-search me-2"></i>Browse Restaurants
                     </a>
-                    <a href="/Architecture" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill shadow">
-                        <i class="bi bi-diagram-3 me-2"></i>View Architecture
+                    <a href="/Menu" class="btn btn-hero-secondary btn-lg px-5 py-3 rounded-pill shadow-lg">
+                        <i class="bi bi-card-list me-2"></i>View Menu
                     </a>
                 </div>
             </div>
         </div>
     </div>
+    <div class="hero-wave"></div>
 </div>
 
+<!-- Quick Stats -->
 <div class="container py-5">
-    <!-- Stats Section -->
-    <div class="row g-4 mb-5 text-center">
+    <div class="row g-4 mb-5">
         <div class="col-lg-3 col-md-6">
-            <div class="p-4">
-                <i class="bi bi-cloud-check display-4 text-primary mb-3"></i>
-                <h3 class="fw-bold">99.95%</h3>
-                <p class="text-muted mb-0">Uptime SLA</p>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="bi bi-shop text-primary"></i>
+                </div>
+                <h3 class="stat-number" data-target="500">0</h3>
+                <p class="stat-label">Partner Restaurants</p>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
-            <div class="p-4">
-                <i class="bi bi-lightning-charge display-4 text-success mb-3"></i>
-                <h3 class="fw-bold">&lt;100ms</h3>
-                <p class="text-muted mb-0">Response Time</p>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="bi bi-people text-success"></i>
+                </div>
+                <h3 class="stat-number" data-target="50000">0</h3>
+                <p class="stat-label">Happy Customers</p>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
-            <div class="p-4">
-                <i class="bi bi-shield-check display-4 text-info mb-3"></i>
-                <h3 class="fw-bold">Bank-Grade</h3>
-                <p class="text-muted mb-0">Security</p>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="bi bi-bag-check text-warning"></i>
+                </div>
+                <h3 class="stat-number" data-target="100000">0</h3>
+                <p class="stat-label">Orders Delivered</p>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
-            <div class="p-4">
-                <i class="bi bi-globe display-4 text-warning mb-3"></i>
-                <h3 class="fw-bold">Global</h3>
-                <p class="text-muted mb-0">CDN Coverage</p>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="bi bi-star-fill text-danger"></i>
+                </div>
+                <h3 class="stat-number" data-target="4.8">0</h3>
+                <p class="stat-label">Average Rating</p>
             </div>
         </div>
     </div>
 
-    <div class="row g-4">
-        <!-- Project Introduction Card -->
-        <div class="col-lg-12" id="features">
-            <div class="card shadow-lg border-0 h-100">
-                <div class="card-header bg-primary text-white">
-                    <h2 class="h4 mb-0"><i class="bi bi-info-circle me-2"></i>Project Introduction</h2>
+    <!-- Featured Restaurants -->
+    <div class="section-header text-center mb-5">
+        <h2 class="display-4 fw-bold gradient-text">Featured Restaurants</h2>
+        <p class="lead text-muted">Discover the most popular restaurants in your area</p>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-lg-4 col-md-6">
+            <div class="restaurant-card">
+                <div class="restaurant-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="restaurant-badge">
+                        <i class="bi bi-star-fill"></i> 4.8
+                    </div>
+                    <i class="bi bi-egg-fried restaurant-icon"></i>
                 </div>
-                <div class="card-body p-4">
-                    <p class="lead fs-5">
-                        <strong>Feast Fetch</strong> is an innovative cloud-based restaurant ordering system designed to revolutionize 
-                        the way customers interact with their favorite restaurants. Built on Microsoft Azure's robust cloud infrastructure, 
-                        our platform provides a seamless, scalable, and secure solution for online food ordering.
-                    </p>
-                    <hr class="my-4">
-                    <p class="fs-6">
-                        The system allows customers to browse restaurant menus, customize their orders, make secure payments, 
-                        and track deliveries in real-time. Restaurant owners benefit from an intuitive dashboard for managing 
-                        orders, updating menus, and analyzing business metrics. Our cloud-first approach ensures high availability, 
-                        automatic scaling during peak hours, and enterprise-grade security.
-                    </p>
-                    <p class="mb-0 fs-6">
-                        Key features include real-time order tracking, intelligent recommendations based on user preferences, 
-                        multi-restaurant support, integrated payment processing, and comprehensive analytics for business intelligence.
-                    </p>
+                <div class="restaurant-info">
+                    <h4 class="restaurant-name">The Gourmet Kitchen</h4>
+                    <p class="restaurant-cuisine"><i class="bi bi-tag-fill"></i> Italian, Continental</p>
+                    <div class="restaurant-meta">
+                        <span><i class="bi bi-clock"></i> 30-40 min</span>
+                        <span><i class="bi bi-currency-dollar"></i> $$ - $$$</span>
+                    </div>
+                    <a href="/Menu?restaurant=1" class="btn btn-order w-100 mt-3">
+                        <i class="bi bi-cart-plus me-2"></i>Order Now
+                    </a>
                 </div>
             </div>
         </div>
 
-        <!-- Group Details Card -->
-        <div class="col-lg-6">
-            <div class="card shadow-lg border-0 h-100">
-                <div class="card-header bg-success text-white">
-                    <h2 class="h4 mb-0"><i class="bi bi-people me-2"></i>Group Details</h2>
-                </div>
-                <div class="card-body p-4">
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <tbody>
-                                <tr>
-                                    <td class="fw-bold"><i class="bi bi-tag text-primary"></i> Group Code:</td>
-                                    <td>Group [Your Group Code]</td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold"><i class="bi bi-person-badge text-success"></i> Leader:</td>
-                                    <td>[Your Name] ([Your ID])</td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold"><i class="bi bi-people text-info"></i> Members:</td>
-                                    <td>
-                                        <ul class="list-unstyled mb-0">
-                                            <li>[Member 1 Name] ([ID])</li>
-                                            <li>[Member 2 Name] ([ID])</li>
-                                            <li>[Member 3 Name] ([ID])</li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold"><i class="bi bi-calendar text-warning"></i> Session:</td>
-                                    <td>Fall 2025</td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold"><i class="bi bi-book text-danger"></i> Course:</td>
-                                    <td>Cloud Computing</td>
-                                </tr>
-                            </tbody>
-                        </table>
+        <div class="col-lg-4 col-md-6">
+            <div class="restaurant-card">
+                <div class="restaurant-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="restaurant-badge">
+                        <i class="bi bi-star-fill"></i> 4.9
                     </div>
+                    <i class="bi bi-cup-hot restaurant-icon"></i>
+                </div>
+                <div class="restaurant-info">
+                    <h4 class="restaurant-name">Spice Paradise</h4>
+                    <p class="restaurant-cuisine"><i class="bi bi-tag-fill"></i> Indian, Asian</p>
+                    <div class="restaurant-meta">
+                        <span><i class="bi bi-clock"></i> 25-35 min</span>
+                        <span><i class="bi bi-currency-dollar"></i> $ - $$</span>
+                    </div>
+                    <a href="/Menu?restaurant=2" class="btn btn-order w-100 mt-3">
+                        <i class="bi bi-cart-plus me-2"></i>Order Now
+                    </a>
                 </div>
             </div>
         </div>
 
-        <!-- Project Plan Card -->
-        <div class="col-lg-6">
-            <div class="card shadow-lg border-0 h-100">
-                <div class="card-header bg-info text-white">
-                    <h2 class="h4 mb-0"><i class="bi bi-calendar-check me-2"></i>Project Plan</h2>
-                </div>
-                <div class="card-body p-4">
-                    <div class="timeline">
-                        <div class="timeline-item mb-3">
-                            <div class="d-flex">
-                                <div class="badge bg-primary rounded-circle me-3" style="width: 32px; height: 32px; padding-top: 6px;">1</div>
-                                <div>
-                                    <h5 class="mb-1">Planning & Design</h5>
-                                    <p class="mb-1 small"><strong>Week 1-2:</strong> Requirements gathering, system design, database schema design</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item mb-3">
-                            <div class="d-flex">
-                                <div class="badge bg-success rounded-circle me-3" style="width: 32px; height: 32px; padding-top: 6px;">2</div>
-                                <div>
-                                    <h5 class="mb-1">Azure Infrastructure Setup</h5>
-                                    <p class="mb-1 small"><strong>Week 3-4:</strong> Configure App Service, SQL Database, Storage, API Management</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item mb-3">
-                            <div class="d-flex">
-                                <div class="badge bg-warning rounded-circle me-3" style="width: 32px; height: 32px; padding-top: 6px;">3</div>
-                                <div>
-                                    <h5 class="mb-1">Backend Development</h5>
-                                    <p class="mb-1 small"><strong>Week 5-7:</strong> Build REST APIs, authentication, business logic</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item mb-3">
-                            <div class="d-flex">
-                                <div class="badge bg-danger rounded-circle me-3" style="width: 32px; height: 32px; padding-top: 6px;">4</div>
-                                <div>
-                                    <h5 class="mb-1">Frontend Development</h5>
-                                    <p class="mb-1 small"><strong>Week 8-10:</strong> Build responsive UI, integrate with APIs</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item mb-3">
-                            <div class="d-flex">
-                                <div class="badge bg-info rounded-circle me-3" style="width: 32px; height: 32px; padding-top: 6px;">5</div>
-                                <div>
-                                    <h5 class="mb-1">Testing & Deployment</h5>
-                                    <p class="mb-1 small"><strong>Week 11-12:</strong> Unit testing, integration testing, production deployment</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="d-flex">
-                                <div class="badge bg-secondary rounded-circle me-3" style="width: 32px; height: 32px; padding-top: 6px;">6</div>
-                                <div>
-                                    <h5 class="mb-1">Documentation & Presentation</h5>
-                                    <p class="mb-0 small"><strong>Week 13-14:</strong> Final documentation, presentation preparation</p>
-                                </div>
-                            </div>
-                        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="restaurant-card">
+                <div class="restaurant-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="restaurant-badge">
+                        <i class="bi bi-star-fill"></i> 4.7
                     </div>
+                    <i class="bi bi-balloon-heart restaurant-icon"></i>
+                </div>
+                <div class="restaurant-info">
+                    <h4 class="restaurant-name">Burger Haven</h4>
+                    <p class="restaurant-cuisine"><i class="bi bi-tag-fill"></i> American, Fast Food</p>
+                    <div class="restaurant-meta">
+                        <span><i class="bi bi-clock"></i> 20-30 min</span>
+                        <span><i class="bi bi-currency-dollar"></i> $ - $$</span>
+                    </div>
+                    <a href="/Menu?restaurant=3" class="btn btn-order w-100 mt-3">
+                        <i class="bi bi-cart-plus me-2"></i>Order Now
+                    </a>
                 </div>
             </div>
         </div>
 
-        <!-- Key Features Card -->
-        <div class="col-lg-12">
-            <div class="card shadow-lg border-0">
-                <div class="card-header bg-warning text-dark">
-                    <h2 class="h4 mb-0"><i class="bi bi-star me-2"></i>Key Features</h2>
-                </div>
-                <div class="card-body p-4">
-                    <div class="row g-4">
-                        <div class="col-md-4">
-                            <div class="feature-box text-center p-3">
-                                <i class="bi bi-cart-check display-4 text-primary mb-3"></i>
-                                <h5>Easy Ordering</h5>
-                                <p class="small text-muted">Intuitive interface for browsing menus and placing orders</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="feature-box text-center p-3">
-                                <i class="bi bi-geo-alt display-4 text-success mb-3"></i>
-                                <h5>Real-time Tracking</h5>
-                                <p class="small text-muted">Track your order from kitchen to doorstep</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="feature-box text-center p-3">
-                                <i class="bi bi-credit-card display-4 text-info mb-3"></i>
-                                <h5>Secure Payments</h5>
-                                <p class="small text-muted">Multiple payment options with bank-grade security</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="feature-box text-center p-3">
-                                <i class="bi bi-graph-up display-4 text-danger mb-3"></i>
-                                <h5>Analytics Dashboard</h5>
-                                <p class="small text-muted">Business insights and performance metrics</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="feature-box text-center p-3">
-                                <i class="bi bi-phone display-4 text-warning mb-3"></i>
-                                <h5>Mobile Responsive</h5>
-                                <p class="small text-muted">Seamless experience across all devices</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="feature-box text-center p-3">
-                                <i class="bi bi-shield-check display-4 text-secondary mb-3"></i>
-                                <h5>High Availability</h5>
-                                <p class="small text-muted">99.9% uptime with Azure cloud infrastructure</p>
-                            </div>
-                        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="restaurant-card">
+                <div class="restaurant-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <div class="restaurant-badge">
+                        <i class="bi bi-star-fill"></i> 4.6
                     </div>
+                    <i class="bi bi-brightness-high restaurant-icon"></i>
                 </div>
+                <div class="restaurant-info">
+                    <h4 class="restaurant-name">Sushi Master</h4>
+                    <p class="restaurant-cuisine"><i class="bi bi-tag-fill"></i> Japanese, Sushi</p>
+                    <div class="restaurant-meta">
+                        <span><i class="bi bi-clock"></i> 35-45 min</span>
+                        <span><i class="bi bi-currency-dollar"></i> $$$ - $$$$</span>
+                    </div>
+                    <a href="/Menu?restaurant=4" class="btn btn-order w-100 mt-3">
+                        <i class="bi bi-cart-plus me-2"></i>Order Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="restaurant-card">
+                <div class="restaurant-image" style="background: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);">
+                    <div class="restaurant-badge">
+                        <i class="bi bi-star-fill"></i> 4.9
+                    </div>
+                    <i class="bi bi-tree restaurant-icon"></i>
+                </div>
+                <div class="restaurant-info">
+                    <h4 class="restaurant-name">Green Leaf Cafe</h4>
+                    <p class="restaurant-cuisine"><i class="bi bi-tag-fill"></i> Healthy, Vegan</p>
+                    <div class="restaurant-meta">
+                        <span><i class="bi bi-clock"></i> 25-35 min</span>
+                        <span><i class="bi bi-currency-dollar"></i> $$ - $$$</span>
+                    </div>
+                    <a href="/Menu?restaurant=5" class="btn btn-order w-100 mt-3">
+                        <i class="bi bi-cart-plus me-2"></i>Order Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="restaurant-card">
+                <div class="restaurant-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <div class="restaurant-badge">
+                        <i class="bi bi-star-fill"></i> 4.8
+                    </div>
+                    <i class="bi bi-cake2 restaurant-icon"></i>
+                </div>
+                <div class="restaurant-info">
+                    <h4 class="restaurant-name">Sweet Delights</h4>
+                    <p class="restaurant-cuisine"><i class="bi bi-tag-fill"></i> Desserts, Bakery</p>
+                    <div class="restaurant-meta">
+                        <span><i class="bi bi-clock"></i> 15-25 min</span>
+                        <span><i class="bi bi-currency-dollar"></i> $ - $$</span>
+                    </div>
+                    <a href="/Menu?restaurant=6" class="btn btn-order w-100 mt-3">
+                        <i class="bi bi-cart-plus me-2"></i>Order Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="section-header text-center mb-5 mt-5">
+        <h2 class="display-4 fw-bold gradient-text">How It Works</h2>
+        <p class="lead text-muted">Order your favorite food in 3 simple steps</p>
+    </div>
+
+    <div class="row g-5 mb-5">
+        <div class="col-lg-4">
+            <div class="how-it-works-card">
+                <div class="step-number">1</div>
+                <div class="step-icon">
+                    <i class="bi bi-search"></i>
+                </div>
+                <h4>Choose Restaurant</h4>
+                <p>Browse through hundreds of restaurants and find your favorite cuisine</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="how-it-works-card">
+                <div class="step-number">2</div>
+                <div class="step-icon">
+                    <i class="bi bi-cart-check"></i>
+                </div>
+                <h4>Place Order</h4>
+                <p>Select your dishes, customize them, and add to cart</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="how-it-works-card">
+                <div class="step-number">3</div>
+                <div class="step-icon">
+                    <i class="bi bi-truck"></i>
+                </div>
+                <h4>Get Delivered</h4>
+                <p>Sit back and relax while we deliver your food hot and fresh</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="cta-section">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="display-5 fw-bold mb-3">Ready to Order?</h2>
+                <p class="lead mb-0">Join thousands of satisfied customers and order your favorite food now!</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="/Restaurants" class="btn btn-cta btn-lg px-5 py-3 rounded-pill">
+                    <i class="bi bi-rocket-takeoff me-2"></i>Start Ordering
+                </a>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        // Animate counter numbers
+        function animateCounter(element) {
+            const target = parseFloat(element.getAttribute('data-target'));
+            const duration = 2000;
+            const steps = 60;
+            const increment = target / steps;
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toFixed(target % 1 === 0 ? 0 : 1);
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, duration / steps);
+        }
+
+        // Trigger counter animation when in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-number').forEach(counter => {
+            observer.observe(counter);
+        });
+    </script>
+}
 

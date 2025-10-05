@@ -1,0 +1,460 @@
+@page
+@model FeastFetch.Pages.MenuModel
+@{
+    ViewData["Title"] = "Restaurant Menu";
+}
+
+<div class="page-header text-white text-center">
+    <div class="container">
+        <h1 class="display-3 fw-bold"><i class="bi bi-book me-3"></i>Menu</h1>
+        <p class="lead">Browse our delicious selection</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <!-- Restaurant Info Header -->
+    <div class="card shadow-lg border-0 mb-5 restaurant-info-card">
+        <div class="card-body p-4">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="restaurant-logo-large me-4">
+                            <i class="bi bi-egg-fried"></i>
+                        </div>
+                        <div>
+                            <h2 class="mb-2 fw-bold">The Gourmet Kitchen</h2>
+                            <p class="mb-2 text-muted">Authentic Italian cuisine with a modern twist</p>
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="badge bg-warning text-dark"><i class="bi bi-star-fill"></i> 4.8 (2.5K+ reviews)</span>
+                                <span class="text-muted"><i class="bi bi-clock-fill"></i> 30-40 min</span>
+                                <span class="text-muted"><i class="bi bi-geo-alt-fill"></i> 2.5 km</span>
+                                <span class="text-muted"><i class="bi bi-currency-dollar"></i> $$ - $$$</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="restaurant-offer-banner">
+                        <i class="bi bi-gift-fill me-2"></i>
+                        <strong>Special Offer:</strong> 20% off on orders above $30
+                    </div>
+                </div>
+                <div class="col-lg-4 text-end">
+                    <a href="/Cart" class="btn btn-primary btn-lg px-4 py-3 position-relative">
+                        <i class="bi bi-cart3 me-2"></i>View Cart
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Menu Categories Sidebar -->
+        <div class="col-lg-3 mb-4">
+            <div class="card shadow-lg border-0 sticky-sidebar">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="bi bi-list-ul me-2"></i>Categories</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="#appetizers" class="list-group-item list-group-item-action menu-category-link active">
+                        <i class="bi bi-bowl me-2"></i>Appetizers
+                    </a>
+                    <a href="#main-course" class="list-group-item list-group-item-action menu-category-link">
+                        <i class="bi bi-egg-fried me-2"></i>Main Course
+                    </a>
+                    <a href="#pasta" class="list-group-item list-group-item-action menu-category-link">
+                        <i class="bi bi-menu-button me-2"></i>Pasta
+                    </a>
+                    <a href="#pizza" class="list-group-item list-group-item-action menu-category-link">
+                        <i class="bi bi-circle me-2"></i>Pizza
+                    </a>
+                    <a href="#desserts" class="list-group-item list-group-item-action menu-category-link">
+                        <i class="bi bi-cake2 me-2"></i>Desserts
+                    </a>
+                    <a href="#beverages" class="list-group-item list-group-item-action menu-category-link">
+                        <i class="bi bi-cup-straw me-2"></i>Beverages
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Items -->
+        <div class="col-lg-9">
+            <!-- Appetizers -->
+            <div id="appetizers" class="menu-section mb-5">
+                <h3 class="section-title mb-4"><i class="bi bi-bowl me-2"></i>Appetizers</h3>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="menu-item-card">
+                            <div class="menu-item-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                            <div class="menu-item-content">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h5 class="menu-item-name">Bruschetta</h5>
+                                        <p class="menu-item-description">Toasted bread with tomatoes, basil, and garlic</p>
+                                    </div>
+                                    <div class="menu-item-badge">
+                                        <i class="bi bi-fire text-danger"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="menu-item-price">$8.99</span>
+                                    <button class="btn btn-add-to-cart" onclick="addToCart('Bruschetta', 8.99)">
+                                        <i class="bi bi-plus-circle me-1"></i>Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="menu-item-card">
+                            <div class="menu-item-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                            <div class="menu-item-content">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h5 class="menu-item-name">Mozzarella Sticks</h5>
+                                        <p class="menu-item-description">Crispy fried mozzarella with marinara sauce</p>
+                                    </div>
+                                    <div class="menu-item-badge">
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="menu-item-price">$7.49</span>
+                                    <button class="btn btn-add-to-cart" onclick="addToCart('Mozzarella Sticks', 7.49)">
+                                        <i class="bi bi-plus-circle me-1"></i>Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="menu-item-card">
+                            <div class="menu-item-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                            <div class="menu-item-content">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h5 class="menu-item-name">Caesar Salad</h5>
+                                        <p class="menu-item-description">Fresh romaine with parmesan and croutons</p>
+                                    </div>
+                                    <div class="menu-item-badge">
+                                        <i class="bi bi-heart-fill text-danger"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="menu-item-price">$9.99</span>
+                                    <button class="btn btn-add-to-cart" onclick="addToCart('Caesar Salad', 9.99)">
+                                        <i class="bi bi-plus-circle me-1"></i>Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="menu-item-card">
+                            <div class="menu-item-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                            <div class="menu-item-content">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h5 class="menu-item-name">Garlic Bread</h5>
+                                        <p class="menu-item-description">Freshly baked with butter and herbs</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="menu-item-price">$5.99</span>
+                                    <button class="btn btn-add-to-cart" onclick="addToCart('Garlic Bread', 5.99)">
+                                        <i class="bi bi-plus-circle me-1"></i>Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Course -->
+            <div id="main-course" class="menu-section mb-5">
+                <h3 class="section-title mb-4"><i class="bi bi-egg-fried me-2"></i>Main Course</h3>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="menu-item-card">
+                            <div class="menu-item-image" style="background: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);"></div>
+                            <div class="menu-item-content">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h5 class="menu-item-name">Grilled Salmon</h5>
+                                        <p class="menu-item-description">Fresh salmon with lemon butter sauce and veggies</p>
+                                    </div>
+                                    <div class="menu-item-badge">
+                                        <i class="bi bi-fire text-danger"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="menu-item-price">$24.99</span>
+                                    <button class="btn btn-add-to-cart" onclick="addToCart('Grilled Salmon', 24.99)">
+                                        <i class="bi bi-plus-circle me-1"></i>Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="menu-item-card">
+                            <div class="menu-item-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                            <div class="menu-item-content">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h5 class="menu-item-name">Chicken Parmesan</h5>
+                                        <p class="menu-item-description">Breaded chicken with marinara and mozzarella</p>
+                                    </div>
+                                    <div class="menu-item-badge">
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="menu-item-price">$19.99</span>
+                                    <button class="btn btn-add-to-cart" onclick="addToCart('Chicken Parmesan', 19.99)">
+                                        <i class="bi bi-plus-circle me-1"></i>Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="menu-item-card">
+                            <div class="menu-item-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                            <div class="menu-item-content">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h5 class="menu-item-name">Beef Steak</h5>
+                                        <p class="menu-item-description">Juicy ribeye with mashed potatoes</p>
+                                    </div>
+                                    <div class="menu-item-badge">
+                                        <i class="bi bi-heart-fill text-danger"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="menu-item-price">$29.99</span>
+                                    <button class="btn btn-add-to-cart" onclick="addToCart('Beef Steak', 29.99)">
+                                        <i class="bi bi-plus-circle me-1"></i>Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pizza -->
+            <div id="pizza" class="menu-section mb-5">
+                <h3 class="section-title mb-4"><i class="bi bi-circle me-2"></i>Pizza</h3>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="menu-item-card">
+                            <div class="menu-item-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                            <div class="menu-item-content">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h5 class="menu-item-name">Margherita Pizza</h5>
+                                        <p class="menu-item-description">Classic pizza with tomato, mozzarella, and basil</p>
+                                    </div>
+                                    <div class="menu-item-badge">
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="menu-item-price">$15.99</span>
+                                    <button class="btn btn-add-to-cart" onclick="addToCart('Margherita Pizza', 15.99)">
+                                        <i class="bi bi-plus-circle me-1"></i>Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="menu-item-card">
+                            <div class="menu-item-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                            <div class="menu-item-content">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h5 class="menu-item-name">Pepperoni Pizza</h5>
+                                        <p class="menu-item-description">Loaded with pepperoni and extra cheese</p>
+                                    </div>
+                                    <div class="menu-item-badge">
+                                        <i class="bi bi-fire text-danger"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="menu-item-price">$17.99</span>
+                                    <button class="btn btn-add-to-cart" onclick="addToCart('Pepperoni Pizza', 17.99)">
+                                        <i class="bi bi-plus-circle me-1"></i>Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div id="desserts" class="menu-section mb-5">
+                <h3 class="section-title mb-4"><i class="bi bi-cake2 me-2"></i>Desserts</h3>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="menu-item-card">
+                            <div class="menu-item-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                            <div class="menu-item-content">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h5 class="menu-item-name">Tiramisu</h5>
+                                        <p class="menu-item-description">Classic Italian dessert with espresso and mascarpone</p>
+                                    </div>
+                                    <div class="menu-item-badge">
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="menu-item-price">$7.99</span>
+                                    <button class="btn btn-add-to-cart" onclick="addToCart('Tiramisu', 7.99)">
+                                        <i class="bi bi-plus-circle me-1"></i>Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="menu-item-card">
+                            <div class="menu-item-image" style="background: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);"></div>
+                            <div class="menu-item-content">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h5 class="menu-item-name">Chocolate Lava Cake</h5>
+                                        <p class="menu-item-description">Warm chocolate cake with molten center</p>
+                                    </div>
+                                    <div class="menu-item-badge">
+                                        <i class="bi bi-heart-fill text-danger"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="menu-item-price">$8.99</span>
+                                    <button class="btn btn-add-to-cart" onclick="addToCart('Chocolate Lava Cake', 8.99)">
+                                        <i class="bi bi-plus-circle me-1"></i>Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beverages -->
+            <div id="beverages" class="menu-section mb-5">
+                <h3 class="section-title mb-4"><i class="bi bi-cup-straw me-2"></i>Beverages</h3>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="menu-item-card">
+                            <div class="menu-item-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                            <div class="menu-item-content">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h5 class="menu-item-name">Fresh Orange Juice</h5>
+                                        <p class="menu-item-description">Freshly squeezed orange juice</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="menu-item-price">$4.99</span>
+                                    <button class="btn btn-add-to-cart" onclick="addToCart('Fresh Orange Juice', 4.99)">
+                                        <i class="bi bi-plus-circle me-1"></i>Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="menu-item-card">
+                            <div class="menu-item-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                            <div class="menu-item-content">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h5 class="menu-item-name">Italian Soda</h5>
+                                        <p class="menu-item-description">Sparkling soda with flavored syrup</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="menu-item-price">$3.99</span>
+                                    <button class="btn btn-add-to-cart" onclick="addToCart('Italian Soda', 3.99)">
+                                        <i class="bi bi-plus-circle me-1"></i>Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+            if (count > 0) {
+                document.getElementById('cartCount').style.display = 'flex';
+            }
+        }
+        
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            
+            // Show success animation
+            const btn = event.target.closest('button');
+            btn.innerHTML = '<i class="bi bi-check-circle me-1"></i>Added!';
+            btn.classList.add('btn-success');
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="bi bi-plus-circle me-1"></i>Add';
+                btn.classList.remove('btn-success');
+            }, 1500);
+        }
+        
+        // Update count on page load
+        updateCartCount();
+        
+        // Smooth scroll for category links
+        document.querySelectorAll('.menu-category-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.menu-category-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const yOffset = -100;
+                const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            });
+        });
+    </script>
+}
+

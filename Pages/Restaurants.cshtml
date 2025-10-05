@@ -1,0 +1,328 @@
+@page
+@model FeastFetch.Pages.RestaurantsModel
+@{
+    ViewData["Title"] = "Browse Restaurants";
+}
+
+<div class="page-header text-white text-center">
+    <div class="container">
+        <h1 class="display-3 fw-bold"><i class="bi bi-shop me-3"></i>Explore Restaurants</h1>
+        <p class="lead">Discover amazing restaurants in your area</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <!-- Search and Filters -->
+    <div class="card shadow-lg border-0 mb-5">
+        <div class="card-body p-4">
+            <div class="row g-3">
+                <div class="col-lg-6">
+                    <div class="search-box">
+                        <i class="bi bi-search search-icon"></i>
+                        <input type="text" class="form-control form-control-lg" placeholder="Search restaurants, cuisines, or dishes..." id="searchInput">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <select class="form-select form-select-lg" id="cuisineFilter">
+                        <option value="">All Cuisines</option>
+                        <option value="italian">Italian</option>
+                        <option value="asian">Asian</option>
+                        <option value="american">American</option>
+                        <option value="japanese">Japanese</option>
+                        <option value="healthy">Healthy</option>
+                        <option value="desserts">Desserts</option>
+                    </select>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <select class="form-select form-select-lg" id="priceFilter">
+                        <option value="">All Prices</option>
+                        <option value="$">$ Budget</option>
+                        <option value="$$">$$ Moderate</option>
+                        <option value="$$$">$$$ Premium</option>
+                        <option value="$$$$">$$$$ Luxury</option>
+                    </select>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <select class="form-select form-select-lg" id="sortFilter">
+                        <option value="popular">Most Popular</option>
+                        <option value="rating">Top Rated</option>
+                        <option value="delivery">Fast Delivery</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Pills -->
+    <div class="category-pills mb-5">
+        <button class="category-pill active" data-category="all">
+            <i class="bi bi-grid-fill"></i> All
+        </button>
+        <button class="category-pill" data-category="trending">
+            <i class="bi bi-fire"></i> Trending
+        </button>
+        <button class="category-pill" data-category="fast">
+            <i class="bi bi-lightning-fill"></i> Fast Delivery
+        </button>
+        <button class="category-pill" data-category="offers">
+            <i class="bi bi-percent"></i> Offers
+        </button>
+        <button class="category-pill" data-category="top-rated">
+            <i class="bi bi-star-fill"></i> Top Rated
+        </button>
+        <button class="category-pill" data-category="new">
+            <i class="bi bi-sparkles"></i> New
+        </button>
+    </div>
+
+    <!-- Restaurant Grid -->
+    <div class="row g-4" id="restaurantGrid">
+        <!-- Restaurant 1 -->
+        <div class="col-lg-4 col-md-6 restaurant-item" data-cuisine="italian" data-price="$$" data-rating="4.8">
+            <div class="restaurant-card-detailed">
+                <div class="restaurant-image-detailed" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="restaurant-badges">
+                        <span class="badge bg-warning text-dark"><i class="bi bi-star-fill"></i> 4.8</span>
+                        <span class="badge bg-success">Fast Delivery</span>
+                    </div>
+                    <i class="bi bi-egg-fried restaurant-icon-detailed"></i>
+                </div>
+                <div class="restaurant-info-detailed">
+                    <h4 class="restaurant-name-detailed">The Gourmet Kitchen</h4>
+                    <p class="restaurant-description">Authentic Italian cuisine with a modern twist</p>
+                    <div class="restaurant-tags">
+                        <span class="tag"><i class="bi bi-tag-fill"></i> Italian</span>
+                        <span class="tag"><i class="bi bi-tag-fill"></i> Continental</span>
+                    </div>
+                    <div class="restaurant-meta-detailed">
+                        <span><i class="bi bi-clock-fill"></i> 30-40 min</span>
+                        <span><i class="bi bi-geo-alt-fill"></i> 2.5 km</span>
+                        <span><i class="bi bi-currency-dollar"></i> $$ - $$$</span>
+                    </div>
+                    <div class="restaurant-offers">
+                        <i class="bi bi-gift-fill"></i> 20% off on orders above $30
+                    </div>
+                    <a href="/Menu?restaurant=1" class="btn btn-order-detailed w-100 mt-3">
+                        <i class="bi bi-cart-plus me-2"></i>View Menu & Order
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Restaurant 2 -->
+        <div class="col-lg-4 col-md-6 restaurant-item" data-cuisine="asian" data-price="$" data-rating="4.9">
+            <div class="restaurant-card-detailed">
+                <div class="restaurant-image-detailed" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="restaurant-badges">
+                        <span class="badge bg-warning text-dark"><i class="bi bi-star-fill"></i> 4.9</span>
+                        <span class="badge bg-danger">Trending</span>
+                    </div>
+                    <i class="bi bi-cup-hot restaurant-icon-detailed"></i>
+                </div>
+                <div class="restaurant-info-detailed">
+                    <h4 class="restaurant-name-detailed">Spice Paradise</h4>
+                    <p class="restaurant-description">Experience the flavors of authentic Asian spices</p>
+                    <div class="restaurant-tags">
+                        <span class="tag"><i class="bi bi-tag-fill"></i> Indian</span>
+                        <span class="tag"><i class="bi bi-tag-fill"></i> Asian</span>
+                    </div>
+                    <div class="restaurant-meta-detailed">
+                        <span><i class="bi bi-clock-fill"></i> 25-35 min</span>
+                        <span><i class="bi bi-geo-alt-fill"></i> 1.8 km</span>
+                        <span><i class="bi bi-currency-dollar"></i> $ - $$</span>
+                    </div>
+                    <div class="restaurant-offers">
+                        <i class="bi bi-gift-fill"></i> Free delivery on first order
+                    </div>
+                    <a href="/Menu?restaurant=2" class="btn btn-order-detailed w-100 mt-3">
+                        <i class="bi bi-cart-plus me-2"></i>View Menu & Order
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Restaurant 3 -->
+        <div class="col-lg-4 col-md-6 restaurant-item" data-cuisine="american" data-price="$" data-rating="4.7">
+            <div class="restaurant-card-detailed">
+                <div class="restaurant-image-detailed" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="restaurant-badges">
+                        <span class="badge bg-warning text-dark"><i class="bi bi-star-fill"></i> 4.7</span>
+                        <span class="badge bg-info">New</span>
+                    </div>
+                    <i class="bi bi-balloon-heart restaurant-icon-detailed"></i>
+                </div>
+                <div class="restaurant-info-detailed">
+                    <h4 class="restaurant-name-detailed">Burger Haven</h4>
+                    <p class="restaurant-description">Juicy burgers and crispy fries, American style</p>
+                    <div class="restaurant-tags">
+                        <span class="tag"><i class="bi bi-tag-fill"></i> American</span>
+                        <span class="tag"><i class="bi bi-tag-fill"></i> Fast Food</span>
+                    </div>
+                    <div class="restaurant-meta-detailed">
+                        <span><i class="bi bi-clock-fill"></i> 20-30 min</span>
+                        <span><i class="bi bi-geo-alt-fill"></i> 3.2 km</span>
+                        <span><i class="bi bi-currency-dollar"></i> $ - $$</span>
+                    </div>
+                    <div class="restaurant-offers">
+                        <i class="bi bi-gift-fill"></i> Buy 2 Get 1 Free on combos
+                    </div>
+                    <a href="/Menu?restaurant=3" class="btn btn-order-detailed w-100 mt-3">
+                        <i class="bi bi-cart-plus me-2"></i>View Menu & Order
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Restaurant 4 -->
+        <div class="col-lg-4 col-md-6 restaurant-item" data-cuisine="japanese" data-price="$$$" data-rating="4.6">
+            <div class="restaurant-card-detailed">
+                <div class="restaurant-image-detailed" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <div class="restaurant-badges">
+                        <span class="badge bg-warning text-dark"><i class="bi bi-star-fill"></i> 4.6</span>
+                        <span class="badge bg-dark">Premium</span>
+                    </div>
+                    <i class="bi bi-brightness-high restaurant-icon-detailed"></i>
+                </div>
+                <div class="restaurant-info-detailed">
+                    <h4 class="restaurant-name-detailed">Sushi Master</h4>
+                    <p class="restaurant-description">Premium sushi crafted by master chefs</p>
+                    <div class="restaurant-tags">
+                        <span class="tag"><i class="bi bi-tag-fill"></i> Japanese</span>
+                        <span class="tag"><i class="bi bi-tag-fill"></i> Sushi</span>
+                    </div>
+                    <div class="restaurant-meta-detailed">
+                        <span><i class="bi bi-clock-fill"></i> 35-45 min</span>
+                        <span><i class="bi bi-geo-alt-fill"></i> 4.1 km</span>
+                        <span><i class="bi bi-currency-dollar"></i> $$$ - $$$$</span>
+                    </div>
+                    <div class="restaurant-offers">
+                        <i class="bi bi-gift-fill"></i> 15% off on orders above $50
+                    </div>
+                    <a href="/Menu?restaurant=4" class="btn btn-order-detailed w-100 mt-3">
+                        <i class="bi bi-cart-plus me-2"></i>View Menu & Order
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Restaurant 5 -->
+        <div class="col-lg-4 col-md-6 restaurant-item" data-cuisine="healthy" data-price="$$" data-rating="4.9">
+            <div class="restaurant-card-detailed">
+                <div class="restaurant-image-detailed" style="background: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);">
+                    <div class="restaurant-badges">
+                        <span class="badge bg-warning text-dark"><i class="bi bi-star-fill"></i> 4.9</span>
+                        <span class="badge bg-success">Healthy</span>
+                    </div>
+                    <i class="bi bi-tree restaurant-icon-detailed"></i>
+                </div>
+                <div class="restaurant-info-detailed">
+                    <h4 class="restaurant-name-detailed">Green Leaf Cafe</h4>
+                    <p class="restaurant-description">Fresh, organic, and healthy meal options</p>
+                    <div class="restaurant-tags">
+                        <span class="tag"><i class="bi bi-tag-fill"></i> Healthy</span>
+                        <span class="tag"><i class="bi bi-tag-fill"></i> Vegan</span>
+                    </div>
+                    <div class="restaurant-meta-detailed">
+                        <span><i class="bi bi-clock-fill"></i> 25-35 min</span>
+                        <span><i class="bi bi-geo-alt-fill"></i> 2.0 km</span>
+                        <span><i class="bi bi-currency-dollar"></i> $$ - $$$</span>
+                    </div>
+                    <div class="restaurant-offers">
+                        <i class="bi bi-gift-fill"></i> 25% off on smoothie bowls
+                    </div>
+                    <a href="/Menu?restaurant=5" class="btn btn-order-detailed w-100 mt-3">
+                        <i class="bi bi-cart-plus me-2"></i>View Menu & Order
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Restaurant 6 -->
+        <div class="col-lg-4 col-md-6 restaurant-item" data-cuisine="desserts" data-price="$" data-rating="4.8">
+            <div class="restaurant-card-detailed">
+                <div class="restaurant-image-detailed" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <div class="restaurant-badges">
+                        <span class="badge bg-warning text-dark"><i class="bi bi-star-fill"></i> 4.8</span>
+                        <span class="badge bg-danger">Popular</span>
+                    </div>
+                    <i class="bi bi-cake2 restaurant-icon-detailed"></i>
+                </div>
+                <div class="restaurant-info-detailed">
+                    <h4 class="restaurant-name-detailed">Sweet Delights</h4>
+                    <p class="restaurant-description">Heavenly desserts and freshly baked treats</p>
+                    <div class="restaurant-tags">
+                        <span class="tag"><i class="bi bi-tag-fill"></i> Desserts</span>
+                        <span class="tag"><i class="bi bi-tag-fill"></i> Bakery</span>
+                    </div>
+                    <div class="restaurant-meta-detailed">
+                        <span><i class="bi bi-clock-fill"></i> 15-25 min</span>
+                        <span><i class="bi bi-geo-alt-fill"></i> 1.5 km</span>
+                        <span><i class="bi bi-currency-dollar"></i> $ - $$</span>
+                    </div>
+                    <div class="restaurant-offers">
+                        <i class="bi bi-gift-fill"></i> Free cake slice on orders above $25
+                    </div>
+                    <a href="/Menu?restaurant=6" class="btn btn-order-detailed w-100 mt-3">
+                        <i class="bi bi-cart-plus me-2"></i>View Menu & Order
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', filterRestaurants);
+        document.getElementById('cuisineFilter').addEventListener('change', filterRestaurants);
+        document.getElementById('priceFilter').addEventListener('change', filterRestaurants);
+
+        function filterRestaurants() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const cuisineFilter = document.getElementById('cuisineFilter').value.toLowerCase();
+            const priceFilter = document.getElementById('priceFilter').value;
+
+            const restaurants = document.querySelectorAll('.restaurant-item');
+
+            restaurants.forEach(restaurant => {
+                const name = restaurant.querySelector('.restaurant-name-detailed').textContent.toLowerCase();
+                const description = restaurant.querySelector('.restaurant-description').textContent.toLowerCase();
+                const cuisine = restaurant.dataset.cuisine;
+                const price = restaurant.dataset.price;
+
+                const matchesSearch = name.includes(searchTerm) || description.includes(searchTerm);
+                const matchesCuisine = !cuisineFilter || cuisine === cuisineFilter;
+                const matchesPrice = !priceFilter || price.includes(priceFilter);
+
+                if (matchesSearch && matchesCuisine && matchesPrice) {
+                    restaurant.style.display = 'block';
+                    setTimeout(() => {
+                        restaurant.style.opacity = '1';
+                        restaurant.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    restaurant.style.opacity = '0';
+                    restaurant.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        restaurant.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Category pills
+        document.querySelectorAll('.category-pill').forEach(pill => {
+            pill.addEventListener('click', function() {
+                document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Add transition styles
+        document.querySelectorAll('.restaurant-item').forEach(item => {
+            item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        });
+    </script>
+}
+

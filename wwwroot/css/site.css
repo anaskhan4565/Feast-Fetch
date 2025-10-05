@@ -2264,3 +2264,623 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+/* ================================
+   PROJECT DOCUMENTATION STYLES
+   ================================ */
+
+/* Project Logo */
+.project-logo {
+    width: 150px;
+    height: 150px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    color: white;
+    box-shadow: var(--shadow-xl);
+    margin: 0 auto;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Feature Highlight */
+.feature-highlight {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--primary);
+    transition: all var(--transition-base);
+}
+
+.feature-highlight:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow-md);
+    background: rgba(255, 255, 255, 1);
+}
+
+.feature-highlight i {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+}
+
+/* Technology Stack */
+.technology-stack {
+    padding: 2rem;
+    background: rgba(99, 102, 241, 0.05);
+    border-radius: var(--radius-lg);
+}
+
+.tech-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.tech-badge:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.tech-badge i {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+/* Info Cards */
+.info-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    margin-bottom: 1rem;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.info-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.info-content h5 {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.info-content p {
+    font-size: 1.1rem;
+}
+
+/* Team Lead Card */
+.team-lead-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+}
+
+.team-lead-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.team-lead-header i {
+    font-size: 2rem;
+}
+
+.team-lead-info {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.member-avatar {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.team-lead-info h5 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.badges .badge {
+    margin-right: 0.5rem;
+}
+
+/* Team Member Cards */
+.team-member-card-detailed {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.team-member-card-detailed:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    background: white;
+}
+
+.member-avatar-small {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.member-info h5 {
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+}
+
+.member-role {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Timeline Container */
+.timeline-container {
+    position: relative;
+}
+
+.timeline-phase {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.phase-badge {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    z-index: 2;
+}
+
+.phase-content {
+    flex: 1;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.phase-content:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow-lg);
+    background: white;
+}
+
+.phase-content h4 {
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+
+.phase-tasks {
+    list-style: none;
+    padding-left: 0;
+}
+
+.phase-tasks li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.phase-tasks i {
+    font-size: 1.2rem;
+}
+
+.pricing-tier {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+}
+
+/* Deliverable Items */
+.deliverable-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.deliverable-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.deliverable-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+/* Architecture Diagram */
+.architecture-diagram {
+    padding: 2rem;
+    background: rgba(99, 102, 241, 0.03);
+    border-radius: var(--radius-lg);
+}
+
+.arch-layer-group {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.arch-layer {
+    margin-bottom: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+.arch-layer:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-xl);
+}
+
+.layer-header {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.layer-header h5 {
+    margin: 0;
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+.layer-content {
+    padding: 2rem;
+    background: white;
+}
+
+.component-box {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(99, 102, 241, 0.1);
+    border-radius: var(--radius-md);
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.component-box:hover {
+    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.component-box i {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.75rem;
+    color: var(--primary);
+}
+
+.component-box strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.component-box small {
+    color: var(--gray);
+    font-size: 0.85rem;
+}
+
+.layer-connector {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.layer-connector i {
+    font-size: 2rem;
+    color: var(--primary);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+/* Pattern Boxes */
+.pattern-box {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    height: 100%;
+}
+
+.pattern-box:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+}
+
+.pattern-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.pattern-box h5 {
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.pattern-box ul {
+    font-size: 0.9rem;
+}
+
+/* Data Flow Steps */
+.data-flow-steps {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.flow-step {
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 1rem;
+    transition: all var(--transition-base);
+}
+
+.flow-step:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow-lg);
+    background: white;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-md);
+}
+
+.step-details {
+    flex: 1;
+}
+
+.step-details h5 {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.step-details p {
+    margin-bottom: 0.25rem;
+}
+
+.flow-arrow {
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+.flow-arrow i {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+/* Security Items */
+.security-item {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    height: 100%;
+}
+
+.security-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+}
+
+.security-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.security-item h5 {
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+/* Azure Service Boxes */
+.azure-stat {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.azure-stat:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.azure-stat i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.azure-stat h3 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.service-box {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    height: 100%;
+}
+
+.service-box:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+    background: white;
+}
+
+.service-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.service-header h4 {
+    margin-bottom: 0.25rem;
+    font-weight: 800;
+}
+
+.service-box ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.service-box ul li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.service-box ul li i {
+    font-size: 1.2rem;
+    margin-top: 0.125rem;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    border: none;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-md);
+    padding: 0.5rem 0;
+}
+
+.dropdown-item {
+    padding: 0.75rem 1.5rem;
+    transition: all var(--transition-base);
+}
+
+.dropdown-item:hover {
+    background: var(--gradient-primary);
+    color: white;
+}
+
+.dropdown-item i {
+    opacity: 0.7;
+}
+

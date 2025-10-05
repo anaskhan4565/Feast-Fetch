@@ -1,0 +1,542 @@
+@page
+@model FeastFetch.Pages.AzureServicesModel
+@{
+    ViewData["Title"] = "Azure Services";
+}
+
+<div class="page-header text-white text-center">
+    <div class="container">
+        <h1 class="display-3 fw-bold"><i class="bi bi-cloud me-3"></i>Azure Services</h1>
+        <p class="lead">Powering Feast Fetch with Microsoft Azure</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <!-- Overview -->
+    <div class="card shadow-lg border-0 mb-5">
+        <div class="card-header bg-primary text-white">
+            <h2 class="h3 mb-0"><i class="bi bi-microsoft me-2"></i>Azure Cloud Services Overview</h2>
+        </div>
+        <div class="card-body p-4">
+            <p class="lead mb-4">
+                Feast Fetch leverages a comprehensive suite of Microsoft Azure services to deliver a robust, scalable, 
+                and secure cloud-based restaurant ordering platform.
+            </p>
+            
+            <div class="row g-4">
+                <div class="col-md-4 text-center">
+                    <div class="azure-stat">
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        <h3>12+</h3>
+                        <p>Azure Services</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="azure-stat">
+                        <i class="bi bi-lightning-fill text-warning"></i>
+                        <h3>99.95%</h3>
+                        <p>Uptime SLA</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="azure-stat">
+                        <i class="bi bi-globe text-info"></i>
+                        <h3>Global</h3>
+                        <p>Scale & Reach</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Compute Services -->
+    <div class="card shadow-lg border-0 mb-5">
+        <div class="card-header bg-success text-white">
+            <h2 class="h3 mb-0"><i class="bi bi-cpu me-2"></i>Compute Services</h2>
+        </div>
+        <div class="card-body p-4">
+            <div class="row g-4">
+                <!-- Azure App Service -->
+                <div class="col-lg-6">
+                    <div class="service-box">
+                        <div class="service-header">
+                            <div class="service-icon bg-primary">
+                                <i class="bi bi-app-indicator"></i>
+                            </div>
+                            <div>
+                                <h4>Azure App Service</h4>
+                                <span class="badge bg-primary">Core Service</span>
+                            </div>
+                        </div>
+                        <p><strong>Purpose:</strong> Hosting the ASP.NET Core web application</p>
+                        <p><strong>Features Used:</strong></p>
+                        <ul>
+                            <li><i class="bi bi-check-lg text-success"></i> Auto-scaling based on demand</li>
+                            <li><i class="bi bi-check-lg text-success"></i> Continuous deployment via GitHub Actions</li>
+                            <li><i class="bi bi-check-lg text-success"></i> Custom domain and SSL certificates</li>
+                            <li><i class="bi bi-check-lg text-success"></i> Built-in load balancing</li>
+                            <li><i class="bi bi-check-lg text-success"></i> Health monitoring and diagnostics</li>
+                        </ul>
+                        <div class="pricing-tier">
+                            <strong>Tier:</strong> Standard S1 (Production) / Free F1 (Development)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Azure Functions -->
+                <div class="col-lg-6">
+                    <div class="service-box">
+                        <div class="service-header">
+                            <div class="service-icon bg-warning">
+                                <i class="bi bi-lightning-charge"></i>
+                            </div>
+                            <div>
+                                <h4>Azure Functions</h4>
+                                <span class="badge bg-warning text-dark">Serverless</span>
+                            </div>
+                        </div>
+                        <p><strong>Purpose:</strong> Background processing and scheduled tasks</p>
+                        <p><strong>Use Cases:</strong></p>
+                        <ul>
+                            <li><i class="bi bi-check-lg text-success"></i> Order notification processing</li>
+                            <li><i class="bi bi-check-lg text-success"></i> Daily report generation</li>
+                            <li><i class="bi bi-check-lg text-success"></i> Image resizing and optimization</li>
+                            <li><i class="bi bi-check-lg text-success"></i> Scheduled data cleanup</li>
+                            <li><i class="bi bi-check-lg text-success"></i> Payment webhook handling</li>
+                        </ul>
+                        <div class="pricing-tier">
+                            <strong>Plan:</strong> Consumption Plan (Pay per execution)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Services -->
+    <div class="card shadow-lg border-0 mb-5">
+        <div class="card-header bg-info text-white">
+            <h2 class="h3 mb-0"><i class="bi bi-database me-2"></i>Data & Storage Services</h2>
+        </div>
+        <div class="card-body p-4">
+            <div class="row g-4">
+                <!-- Azure SQL Database -->
+                <div class="col-lg-6">
+                    <div class="service-box">
+                        <div class="service-header">
+                            <div class="service-icon bg-info">
+                                <i class="bi bi-server"></i>
+                            </div>
+                            <div>
+                                <h4>Azure SQL Database</h4>
+                                <span class="badge bg-info">Critical</span>
+                            </div>
+                        </div>
+                        <p><strong>Purpose:</strong> Primary relational database for transactional data</p>
+                        <p><strong>Database Schema:</strong></p>
+                        <ul>
+                            <li><i class="bi bi-table text-primary"></i> Users & Authentication</li>
+                            <li><i class="bi bi-table text-primary"></i> Restaurants & Menus</li>
+                            <li><i class="bi bi-table text-primary"></i> Orders & Order Items</li>
+                            <li><i class="bi bi-table text-primary"></i> Payments & Transactions</li>
+                            <li><i class="bi bi-table text-primary"></i> Reviews & Ratings</li>
+                        </ul>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li><i class="bi bi-check-lg text-success"></i> Automatic backups (Point-in-time restore)</li>
+                            <li><i class="bi bi-check-lg text-success"></i> Geo-replication for disaster recovery</li>
+                            <li><i class="bi bi-check-lg text-success"></i> Built-in intelligence and optimization</li>
+                            <li><i class="bi bi-check-lg text-success"></i> Advanced threat protection</li>
+                        </ul>
+                        <div class="pricing-tier">
+                            <strong>Tier:</strong> Standard S2 (2 DTUs)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Azure Blob Storage -->
+                <div class="col-lg-6">
+                    <div class="service-box">
+                        <div class="service-header">
+                            <div class="service-icon bg-success">
+                                <i class="bi bi-cloud-upload"></i>
+                            </div>
+                            <div>
+                                <h4>Azure Blob Storage</h4>
+                                <span class="badge bg-success">Storage</span>
+                            </div>
+                        </div>
+                        <p><strong>Purpose:</strong> Object storage for media files and assets</p>
+                        <p><strong>Stored Content:</strong></p>
+                        <ul>
+                            <li><i class="bi bi-image text-warning"></i> Restaurant images and logos</li>
+                            <li><i class="bi bi-image text-warning"></i> Food item photos</li>
+                            <li><i class="bi bi-file-earmark text-info"></i> User profile pictures</li>
+                            <li><i class="bi bi-file-pdf text-danger"></i> Order receipts (PDF)</li>
+                            <li><i class="bi bi-collection text-primary"></i> Static website assets</li>
+                        </ul>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li><i class="bi bi-check-lg text-success"></i> Hot, Cool, and Archive tiers</li>
+                            <li><i class="bi bi-check-lg text-success"></i> CDN integration for fast delivery</li>
+                            <li><i class="bi bi-check-lg text-success"></i> Lifecycle management policies</li>
+                            <li><i class="bi bi-check-lg text-success"></i> Encryption at rest</li>
+                        </ul>
+                        <div class="pricing-tier">
+                            <strong>Tier:</strong> General Purpose v2
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Azure Cache for Redis -->
+                <div class="col-lg-6">
+                    <div class="service-box">
+                        <div class="service-header">
+                            <div class="service-icon bg-danger">
+                                <i class="bi bi-lightning"></i>
+                            </div>
+                            <div>
+                                <h4>Azure Cache for Redis</h4>
+                                <span class="badge bg-danger">Performance</span>
+                            </div>
+                        </div>
+                        <p><strong>Purpose:</strong> In-memory caching for high-speed data access</p>
+                        <p><strong>Cached Data:</strong></p>
+                        <ul>
+                            <li><i class="bi bi-person text-primary"></i> User sessions</li>
+                            <li><i class="bi bi-cart text-success"></i> Shopping cart data</li>
+                            <li><i class="bi bi-shop text-info"></i> Restaurant listings</li>
+                            <li><i class="bi bi-menu-button text-warning"></i> Menu items</li>
+                            <li><i class="bi bi-database text-danger"></i> Frequently queried data</li>
+                        </ul>
+                        <div class="pricing-tier">
+                            <strong>Tier:</strong> Basic C1 (1 GB cache)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Azure Cosmos DB -->
+                <div class="col-lg-6">
+                    <div class="service-box">
+                        <div class="service-header">
+                            <div class="service-icon bg-secondary">
+                                <i class="bi bi-globe2"></i>
+                            </div>
+                            <div>
+                                <h4>Azure Cosmos DB</h4>
+                                <span class="badge bg-secondary">NoSQL</span>
+                            </div>
+                        </div>
+                        <p><strong>Purpose:</strong> Globally distributed NoSQL database</p>
+                        <p><strong>Use Cases:</strong></p>
+                        <ul>
+                            <li><i class="bi bi-geo text-primary"></i> Real-time order tracking data</li>
+                            <li><i class="bi bi-chat text-success"></i> Chat messages between customer & driver</li>
+                            <li><i class="bi bi-activity text-info"></i> Activity logs and audit trails</li>
+                            <li><i class="bi bi-graph-up text-warning"></i> Analytics and metrics</li>
+                        </ul>
+                        <div class="pricing-tier">
+                            <strong>API:</strong> Core (SQL) | <strong>Tier:</strong> Serverless
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Integration & Messaging -->
+    <div class="card shadow-lg border-0 mb-5">
+        <div class="card-header bg-warning text-dark">
+            <h2 class="h3 mb-0"><i class="bi bi-diagram-3 me-2"></i>Integration & Messaging Services</h2>
+        </div>
+        <div class="card-body p-4">
+            <div class="row g-4">
+                <!-- Azure Service Bus -->
+                <div class="col-lg-6">
+                    <div class="service-box">
+                        <div class="service-header">
+                            <div class="service-icon bg-primary">
+                                <i class="bi bi-send"></i>
+                            </div>
+                            <div>
+                                <h4>Azure Service Bus</h4>
+                                <span class="badge bg-primary">Messaging</span>
+                            </div>
+                        </div>
+                        <p><strong>Purpose:</strong> Enterprise messaging and event-driven architecture</p>
+                        <p><strong>Message Queues:</strong></p>
+                        <ul>
+                            <li><i class="bi bi-envelope"></i> <strong>order-processing-queue:</strong> New order events</li>
+                            <li><i class="bi bi-bell"></i> <strong>notification-queue:</strong> Push notifications</li>
+                            <li><i class="bi bi-credit-card"></i> <strong>payment-queue:</strong> Payment processing</li>
+                            <li><i class="bi bi-envelope-paper"></i> <strong>email-queue:</strong> Email notifications</li>
+                        </ul>
+                        <p><strong>Topics & Subscriptions:</strong></p>
+                        <ul>
+                            <li>Order status updates</li>
+                            <li>Restaurant notifications</li>
+                            <li>Customer alerts</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Azure SignalR Service -->
+                <div class="col-lg-6">
+                    <div class="service-box">
+                        <div class="service-header">
+                            <div class="service-icon bg-success">
+                                <i class="bi bi-broadcast"></i>
+                            </div>
+                            <div>
+                                <h4>Azure SignalR Service</h4>
+                                <span class="badge bg-success">Real-time</span>
+                            </div>
+                        </div>
+                        <p><strong>Purpose:</strong> Real-time communication via WebSockets</p>
+                        <p><strong>Real-time Features:</strong></p>
+                        <ul>
+                            <li><i class="bi bi-truck"></i> Live order tracking updates</li>
+                            <li><i class="bi bi-geo-alt"></i> Driver location tracking</li>
+                            <li><i class="bi bi-bell-fill"></i> Instant notifications</li>
+                            <li><i class="bi bi-chat-dots"></i> Customer support chat</li>
+                            <li><i class="bi bi-activity"></i> Real-time dashboard updates</li>
+                        </ul>
+                        <div class="pricing-tier">
+                            <strong>Tier:</strong> Free (20 concurrent connections)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Azure API Management -->
+                <div class="col-lg-6">
+                    <div class="service-box">
+                        <div class="service-header">
+                            <div class="service-icon bg-info">
+                                <i class="bi bi-gear"></i>
+                            </div>
+                            <div>
+                                <h4>Azure API Management</h4>
+                                <span class="badge bg-info">Gateway</span>
+                            </div>
+                        </div>
+                        <p><strong>Purpose:</strong> API gateway and management platform</p>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li><i class="bi bi-key"></i> API key management</li>
+                            <li><i class="bi bi-speedometer2"></i> Rate limiting and throttling</li>
+                            <li><i class="bi bi-file-text"></i> API documentation (OpenAPI)</li>
+                            <li><i class="bi bi-graph-up"></i> Usage analytics</li>
+                            <li><i class="bi bi-shield"></i> Authentication policies</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Azure Logic Apps -->
+                <div class="col-lg-6">
+                    <div class="service-box">
+                        <div class="service-header">
+                            <div class="service-icon bg-warning">
+                                <i class="bi bi-bezier2"></i>
+                            </div>
+                            <div>
+                                <h4>Azure Logic Apps</h4>
+                                <span class="badge bg-warning text-dark">Workflow</span>
+                            </div>
+                        </div>
+                        <p><strong>Purpose:</strong> Workflow automation and integration</p>
+                        <p><strong>Workflows:</strong></p>
+                        <ul>
+                            <li><i class="bi bi-envelope"></i> Email notification workflows</li>
+                            <li><i class="bi bi-phone"></i> SMS alerts via Twilio</li>
+                            <li><i class="bi bi-file-pdf"></i> Receipt generation and storage</li>
+                            <li><i class="bi bi-clock"></i> Scheduled report generation</li>
+                            <li><i class="bi bi-exclamation-triangle"></i> Error handling and alerts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Security & Identity -->
+    <div class="card shadow-lg border-0 mb-5">
+        <div class="card-header bg-danger text-white">
+            <h2 class="h3 mb-0"><i class="bi bi-shield-lock me-2"></i>Security & Identity Services</h2>
+        </div>
+        <div class="card-body p-4">
+            <div class="row g-4">
+                <!-- Azure AD B2C -->
+                <div class="col-lg-6">
+                    <div class="service-box">
+                        <div class="service-header">
+                            <div class="service-icon bg-danger">
+                                <i class="bi bi-person-check"></i>
+                            </div>
+                            <div>
+                                <h4>Azure AD B2C</h4>
+                                <span class="badge bg-danger">Identity</span>
+                            </div>
+                        </div>
+                        <p><strong>Purpose:</strong> Customer identity and access management</p>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li><i class="bi bi-box-arrow-in-right"></i> Social login (Google, Facebook)</li>
+                            <li><i class="bi bi-envelope-at"></i> Email/password authentication</li>
+                            <li><i class="bi bi-phone"></i> Phone number verification</li>
+                            <li><i class="bi bi-shield-check"></i> Multi-factor authentication</li>
+                            <li><i class="bi bi-key"></i> Password reset workflows</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Azure Key Vault -->
+                <div class="col-lg-6">
+                    <div class="service-box">
+                        <div class="service-header">
+                            <div class="service-icon bg-warning">
+                                <i class="bi bi-safe"></i>
+                            </div>
+                            <div>
+                                <h4>Azure Key Vault</h4>
+                                <span class="badge bg-warning text-dark">Secrets</span>
+                            </div>
+                        </div>
+                        <p><strong>Purpose:</strong> Secure storage of secrets and keys</p>
+                        <p><strong>Stored Secrets:</strong></p>
+                        <ul>
+                            <li><i class="bi bi-database"></i> Database connection strings</li>
+                            <li><i class="bi bi-credit-card"></i> Payment gateway API keys</li>
+                            <li><i class="bi bi-key"></i> Encryption keys</li>
+                            <li><i class="bi bi-envelope"></i> Email service credentials</li>
+                            <li><i class="bi bi-cloud"></i> Third-party service tokens</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Monitoring & Management -->
+    <div class="card shadow-lg border-0 mb-5">
+        <div class="card-header bg-dark text-white">
+            <h2 class="h3 mb-0"><i class="bi bi-graph-up me-2"></i>Monitoring & Management Services</h2>
+        </div>
+        <div class="card-body p-4">
+            <div class="row g-4">
+                <!-- Azure Monitor -->
+                <div class="col-lg-4">
+                    <div class="service-box">
+                        <div class="service-header">
+                            <div class="service-icon bg-primary">
+                                <i class="bi bi-activity"></i>
+                            </div>
+                            <div>
+                                <h4>Azure Monitor</h4>
+                            </div>
+                        </div>
+                        <p><strong>Monitoring:</strong></p>
+                        <ul class="small">
+                            <li>Application metrics</li>
+                            <li>Performance counters</li>
+                            <li>Custom events</li>
+                            <li>Availability tests</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Application Insights -->
+                <div class="col-lg-4">
+                    <div class="service-box">
+                        <div class="service-header">
+                            <div class="service-icon bg-info">
+                                <i class="bi bi-eye"></i>
+                            </div>
+                            <div>
+                                <h4>Application Insights</h4>
+                            </div>
+                        </div>
+                        <p><strong>Telemetry:</strong></p>
+                        <ul class="small">
+                            <li>Request tracking</li>
+                            <li>Dependency tracking</li>
+                            <li>Exception logging</li>
+                            <li>User analytics</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Azure Log Analytics -->
+                <div class="col-lg-4">
+                    <div class="service-box">
+                        <div class="service-header">
+                            <div class="service-icon bg-success">
+                                <i class="bi bi-journal-text"></i>
+                            </div>
+                            <div>
+                                <h4>Log Analytics</h4>
+                            </div>
+                        </div>
+                        <p><strong>Logging:</strong></p>
+                        <ul class="small">
+                            <li>Centralized logs</li>
+                            <li>Query and analysis</li>
+                            <li>Alerting rules</li>
+                            <li>Dashboards</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cost Optimization -->
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-success text-white">
+            <h2 class="h3 mb-0"><i class="bi bi-cash-coin me-2"></i>Cost Optimization Strategy</h2>
+        </div>
+        <div class="card-body p-4">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h5><i class="bi bi-piggy-bank text-success me-2"></i>Cost-Saving Measures</h5>
+                    <ul>
+                        <li><strong>Auto-scaling:</strong> Scale down during off-peak hours</li>
+                        <li><strong>Reserved Instances:</strong> 1-year commitment for App Service</li>
+                        <li><strong>Blob Storage Tiers:</strong> Move old data to Cool/Archive tiers</li>
+                        <li><strong>Serverless Functions:</strong> Pay only for execution time</li>
+                        <li><strong>CDN Caching:</strong> Reduce origin server requests</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5><i class="bi bi-graph-down text-info me-2"></i>Estimated Monthly Cost</h5>
+                    <table class="table table-sm">
+                        <tr>
+                            <td>Azure App Service (S1)</td>
+                            <td class="text-end">$75</td>
+                        </tr>
+                        <tr>
+                            <td>Azure SQL Database (S2)</td>
+                            <td class="text-end">$150</td>
+                        </tr>
+                        <tr>
+                            <td>Azure Blob Storage</td>
+                            <td class="text-end">$20</td>
+                        </tr>
+                        <tr>
+                            <td>Redis Cache (Basic C1)</td>
+                            <td class="text-end">$17</td>
+                        </tr>
+                        <tr>
+                            <td>Other Services</td>
+                            <td class="text-end">$38</td>
+                        </tr>
+                        <tr class="fw-bold border-top">
+                            <td>Total (Estimated)</td>
+                            <td class="text-end">~$300/month</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,465 @@
+@page
+@model FeastFetch.Pages.ArchitectureModel
+@{
+    ViewData["Title"] = "System Architecture";
+}
+
+<div class="page-header text-white text-center">
+    <div class="container">
+        <h1 class="display-3 fw-bold"><i class="bi bi-diagram-3 me-3"></i>System Architecture</h1>
+        <p class="lead">Cloud-Based Multi-Tier Architecture</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <!-- Architecture Overview -->
+    <div class="card shadow-lg border-0 mb-5">
+        <div class="card-header bg-primary text-white">
+            <h2 class="h3 mb-0"><i class="bi bi-diagram-2 me-2"></i>Architecture Overview</h2>
+        </div>
+        <div class="card-body p-4">
+            <p class="lead mb-4">
+                Feast Fetch follows a modern <strong>cloud-native, multi-tier architecture</strong> deployed on Microsoft Azure, 
+                ensuring high availability, scalability, and security.
+            </p>
+            
+            <div class="architecture-diagram">
+                <div class="arch-layer-group">
+                    <h4 class="text-center mb-4"><i class="bi bi-layers"></i> Architecture Layers</h4>
+                    
+                    <!-- Presentation Layer -->
+                    <div class="arch-layer presentation-layer">
+                        <div class="layer-header bg-primary text-white">
+                            <h5><i class="bi bi-window"></i> Presentation Layer</h5>
+                        </div>
+                        <div class="layer-content">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="component-box">
+                                        <i class="bi bi-phone"></i>
+                                        <strong>Mobile Web</strong>
+                                        <small>Responsive Design</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="component-box">
+                                        <i class="bi bi-laptop"></i>
+                                        <strong>Desktop Web</strong>
+                                        <small>Razor Pages UI</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="component-box">
+                                        <i class="bi bi-tablet"></i>
+                                        <strong>Tablet</strong>
+                                        <small>Adaptive Layout</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layer-connector">
+                        <i class="bi bi-arrow-down"></i>
+                    </div>
+
+                    <!-- Application Layer -->
+                    <div class="arch-layer application-layer">
+                        <div class="layer-header bg-success text-white">
+                            <h5><i class="bi bi-code-slash"></i> Application Layer</h5>
+                        </div>
+                        <div class="layer-content">
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <div class="component-box">
+                                        <i class="bi bi-server"></i>
+                                        <strong>Web API</strong>
+                                        <small>RESTful Services</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="component-box">
+                                        <i class="bi bi-shield-check"></i>
+                                        <strong>Authentication</strong>
+                                        <small>Azure AD B2C</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="component-box">
+                                        <i class="bi bi-cpu"></i>
+                                        <strong>Business Logic</strong>
+                                        <small>Order Processing</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="component-box">
+                                        <i class="bi bi-bell"></i>
+                                        <strong>Notifications</strong>
+                                        <small>Real-time Updates</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layer-connector">
+                        <i class="bi bi-arrow-down"></i>
+                    </div>
+
+                    <!-- Data Layer -->
+                    <div class="arch-layer data-layer">
+                        <div class="layer-header bg-info text-white">
+                            <h5><i class="bi bi-database"></i> Data Layer</h5>
+                        </div>
+                        <div class="layer-content">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="component-box">
+                                        <i class="bi bi-file-earmark-code"></i>
+                                        <strong>Azure SQL Database</strong>
+                                        <small>Transactional Data</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="component-box">
+                                        <i class="bi bi-cloud-arrow-up"></i>
+                                        <strong>Blob Storage</strong>
+                                        <small>Media Files</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="component-box">
+                                        <i class="bi bi-lightning"></i>
+                                        <strong>Redis Cache</strong>
+                                        <small>Session & Cache</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layer-connector">
+                        <i class="bi bi-arrow-down"></i>
+                    </div>
+
+                    <!-- Infrastructure Layer -->
+                    <div class="arch-layer infrastructure-layer">
+                        <div class="layer-header bg-warning text-dark">
+                            <h5><i class="bi bi-cloud"></i> Infrastructure Layer (Azure)</h5>
+                        </div>
+                        <div class="layer-content">
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <div class="component-box">
+                                        <i class="bi bi-hdd-network"></i>
+                                        <strong>Azure App Service</strong>
+                                        <small>Web Hosting</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="component-box">
+                                        <i class="bi bi-distribute-vertical"></i>
+                                        <strong>Load Balancer</strong>
+                                        <small>Traffic Distribution</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="component-box">
+                                        <i class="bi bi-speedometer2"></i>
+                                        <strong>CDN</strong>
+                                        <small>Content Delivery</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="component-box">
+                                        <i class="bi bi-shield-lock"></i>
+                                        <strong>Azure Firewall</strong>
+                                        <small>Security</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Architecture Patterns -->
+    <div class="card shadow-lg border-0 mb-5">
+        <div class="card-header bg-success text-white">
+            <h2 class="h3 mb-0"><i class="bi bi-puzzle me-2"></i>Architecture Patterns & Principles</h2>
+        </div>
+        <div class="card-body p-4">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="pattern-box">
+                        <div class="pattern-icon bg-primary">
+                            <i class="bi bi-layers-fill"></i>
+                        </div>
+                        <h5>Multi-Tier Architecture</h5>
+                        <p>Separation of concerns with distinct presentation, application, and data layers for maintainability and scalability.</p>
+                        <ul class="small">
+                            <li>Independent layer scaling</li>
+                            <li>Easy maintenance and updates</li>
+                            <li>Technology flexibility</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="pattern-box">
+                        <div class="pattern-icon bg-success">
+                            <i class="bi bi-bricks"></i>
+                        </div>
+                        <h5>Microservices Ready</h5>
+                        <p>Modular design allowing future transition to microservices architecture for enhanced scalability.</p>
+                        <ul class="small">
+                            <li>Service-oriented design</li>
+                            <li>API-first approach</li>
+                            <li>Independent deployment capability</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="pattern-box">
+                        <div class="pattern-icon bg-info">
+                            <i class="bi bi-arrow-repeat"></i>
+                        </div>
+                        <h5>Event-Driven Architecture</h5>
+                        <p>Asynchronous communication for real-time order tracking and notifications using Azure Service Bus.</p>
+                        <ul class="small">
+                            <li>Real-time order updates</li>
+                            <li>Decoupled components</li>
+                            <li>Scalable message processing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="pattern-box">
+                        <div class="pattern-icon bg-warning">
+                            <i class="bi bi-lightning-charge"></i>
+                        </div>
+                        <h5>CQRS Pattern</h5>
+                        <p>Separate read and write operations for optimized performance and scalability in high-traffic scenarios.</p>
+                        <ul class="small">
+                            <li>Optimized query performance</li>
+                            <li>Independent scaling of reads/writes</li>
+                            <li>Better data consistency</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Flow -->
+    <div class="card shadow-lg border-0 mb-5">
+        <div class="card-header bg-danger text-white">
+            <h2 class="h3 mb-0"><i class="bi bi-arrow-left-right me-2"></i>Data Flow & Request Lifecycle</h2>
+        </div>
+        <div class="card-body p-4">
+            <h5 class="mb-4">Typical Order Placement Flow:</h5>
+            
+            <div class="data-flow-steps">
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-details">
+                        <h5>User Request</h5>
+                        <p>Customer places order through web interface</p>
+                        <small class="text-muted">HTTPS Request → Azure CDN</small>
+                    </div>
+                </div>
+
+                <div class="flow-arrow"><i class="bi bi-arrow-down"></i></div>
+
+                <div class="flow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-details">
+                        <h5>Load Balancing</h5>
+                        <p>Azure Load Balancer distributes request to available App Service instance</p>
+                        <small class="text-muted">Round-robin or Least connections</small>
+                    </div>
+                </div>
+
+                <div class="flow-arrow"><i class="bi bi-arrow-down"></i></div>
+
+                <div class="flow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-details">
+                        <h5>Authentication</h5>
+                        <p>Azure AD B2C validates user identity and session</p>
+                        <small class="text-muted">JWT Token verification</small>
+                    </div>
+                </div>
+
+                <div class="flow-arrow"><i class="bi bi-arrow-down"></i></div>
+
+                <div class="flow-step">
+                    <div class="step-number">4</div>
+                    <div class="step-details">
+                        <h5>Business Logic</h5>
+                        <p>Order validation, inventory check, pricing calculation</p>
+                        <small class="text-muted">ASP.NET Core API</small>
+                    </div>
+                </div>
+
+                <div class="flow-arrow"><i class="bi bi-arrow-down"></i></div>
+
+                <div class="flow-step">
+                    <div class="step-number">5</div>
+                    <div class="step-details">
+                        <h5>Data Persistence</h5>
+                        <p>Order stored in Azure SQL Database with transaction management</p>
+                        <small class="text-muted">ACID compliance</small>
+                    </div>
+                </div>
+
+                <div class="flow-arrow"><i class="bi bi-arrow-down"></i></div>
+
+                <div class="flow-step">
+                    <div class="step-number">6</div>
+                    <div class="step-details">
+                        <h5>Event Publishing</h5>
+                        <p>Order event published to Azure Service Bus for downstream processing</p>
+                        <small class="text-muted">Asynchronous messaging</small>
+                    </div>
+                </div>
+
+                <div class="flow-arrow"><i class="bi bi-arrow-down"></i></div>
+
+                <div class="flow-step">
+                    <div class="step-number">7</div>
+                    <div class="step-details">
+                        <h5>Notifications</h5>
+                        <p>Real-time notifications sent via Azure SignalR to customer and restaurant</p>
+                        <small class="text-muted">WebSocket connections</small>
+                    </div>
+                </div>
+
+                <div class="flow-arrow"><i class="bi bi-arrow-down"></i></div>
+
+                <div class="flow-step">
+                    <div class="step-number">8</div>
+                    <div class="step-details">
+                        <h5>Response</h5>
+                        <p>Order confirmation returned to user with order ID and tracking details</p>
+                        <small class="text-muted">JSON Response via HTTPS</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scalability & Performance -->
+    <div class="card shadow-lg border-0 mb-5">
+        <div class="card-header bg-dark text-white">
+            <h2 class="h3 mb-0"><i class="bi bi-graph-up-arrow me-2"></i>Scalability & Performance</h2>
+        </div>
+        <div class="card-body p-4">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h5><i class="bi bi-arrow-up-circle text-success me-2"></i>Horizontal Scaling</h5>
+                    <p>Azure App Service auto-scaling based on:</p>
+                    <ul>
+                        <li>CPU utilization (threshold: 70%)</li>
+                        <li>Memory usage (threshold: 80%)</li>
+                        <li>HTTP queue length (threshold: 100)</li>
+                        <li>Custom metrics (orders per minute)</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6">
+                    <h5><i class="bi bi-speedometer text-primary me-2"></i>Performance Optimization</h5>
+                    <p>Multiple caching strategies:</p>
+                    <ul>
+                        <li><strong>Redis Cache:</strong> Session data, frequently accessed data</li>
+                        <li><strong>CDN Caching:</strong> Static assets, images</li>
+                        <li><strong>Output Caching:</strong> Restaurant listings, menu items</li>
+                        <li><strong>Database Caching:</strong> Query result caching</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6">
+                    <h5><i class="bi bi-diagram-3 text-info me-2"></i>Load Distribution</h5>
+                    <p>Traffic management features:</p>
+                    <ul>
+                        <li>Azure Traffic Manager for geo-distribution</li>
+                        <li>Application Gateway for L7 load balancing</li>
+                        <li>Health probes for instance monitoring</li>
+                        <li>Automatic failover to healthy instances</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6">
+                    <h5><i class="bi bi-database text-warning me-2"></i>Database Optimization</h5>
+                    <p>SQL performance strategies:</p>
+                    <ul>
+                        <li>Read replicas for query distribution</li>
+                        <li>Indexing on frequently queried columns</li>
+                        <li>Connection pooling for efficiency</li>
+                        <li>Stored procedures for complex operations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Security Architecture -->
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-danger text-white">
+            <h2 class="h3 mb-0"><i class="bi bi-shield-lock me-2"></i>Security Architecture</h2>
+        </div>
+        <div class="card-body p-4">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="security-item">
+                        <div class="security-icon bg-danger">
+                            <i class="bi bi-fingerprint"></i>
+                        </div>
+                        <h5>Authentication & Authorization</h5>
+                        <ul class="small">
+                            <li>Azure AD B2C for identity management</li>
+                            <li>JWT tokens for API authentication</li>
+                            <li>Role-based access control (RBAC)</li>
+                            <li>Multi-factor authentication support</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="security-item">
+                        <div class="security-icon bg-warning">
+                            <i class="bi bi-lock-fill"></i>
+                        </div>
+                        <h5>Data Protection</h5>
+                        <ul class="small">
+                            <li>Encryption at rest (Azure Storage)</li>
+                            <li>Encryption in transit (TLS 1.3)</li>
+                            <li>Azure Key Vault for secrets</li>
+                            <li>PCI DSS compliance for payments</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="security-item">
+                        <div class="security-icon bg-info">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h5>Network Security</h5>
+                        <ul class="small">
+                            <li>Azure Firewall for traffic filtering</li>
+                            <li>DDoS Protection Standard</li>
+                            <li>Virtual Network isolation</li>
+                            <li>Private endpoints for databases</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

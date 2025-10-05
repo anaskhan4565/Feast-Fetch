@@ -1,0 +1,435 @@
+@page
+@model FeastFetch.Pages.AboutModel
+@{
+    ViewData["Title"] = "About Project";
+}
+
+<div class="page-header text-white text-center">
+    <div class="container">
+        <h1 class="display-3 fw-bold"><i class="bi bi-info-circle me-3"></i>About Feast Fetch</h1>
+        <p class="lead">Project Introduction & Team Details</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <!-- Project Introduction -->
+    <div class="card shadow-lg border-0 mb-5">
+        <div class="card-header bg-primary text-white">
+            <h2 class="h3 mb-0"><i class="bi bi-book me-2"></i>Project Introduction</h2>
+        </div>
+        <div class="card-body p-4">
+            <div class="row align-items-center mb-4">
+                <div class="col-lg-3 text-center mb-3 mb-lg-0">
+                    <div class="project-logo">
+                        <i class="bi bi-shop-window"></i>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <h3 class="fw-bold mb-3">Feast Fetch - Modern Restaurant Ordering System</h3>
+                    <p class="lead fs-5">
+                        <strong>Feast Fetch</strong> is an innovative cloud-based restaurant ordering system designed to revolutionize 
+                        the way customers interact with their favorite restaurants. Built on Microsoft Azure's robust cloud infrastructure, 
+                        our platform provides a seamless, scalable, and secure solution for online food ordering.
+                    </p>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="feature-highlight">
+                        <i class="bi bi-bullseye text-primary"></i>
+                        <h5>Project Objective</h5>
+                        <p>To create a comprehensive cloud-based restaurant ordering platform that connects customers with their 
+                        favorite restaurants, enabling seamless online ordering, real-time tracking, and secure payment processing.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-highlight">
+                        <i class="bi bi-lightbulb text-warning"></i>
+                        <h5>Key Innovation</h5>
+                        <p>Leveraging Microsoft Azure cloud services to provide high availability, automatic scaling during peak hours, 
+                        enterprise-grade security, and real-time order tracking with minimal infrastructure overhead.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="technology-stack mt-4">
+                <h5 class="mb-3"><i class="bi bi-gear-fill me-2"></i>Technology Stack</h5>
+                <div class="row g-3">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="tech-badge">
+                            <i class="bi bi-code-square"></i>
+                            <span>ASP.NET Core 8.0</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="tech-badge">
+                            <i class="bi bi-cloud"></i>
+                            <span>Microsoft Azure</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="tech-badge">
+                            <i class="bi bi-bootstrap"></i>
+                            <span>Bootstrap 5</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="tech-badge">
+                            <i class="bi bi-database"></i>
+                            <span>Azure SQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Group Details -->
+    <div class="card shadow-lg border-0 mb-5">
+        <div class="card-header bg-success text-white">
+            <h2 class="h3 mb-0"><i class="bi bi-people-fill me-2"></i>Group Details</h2>
+        </div>
+        <div class="card-body p-4">
+            <div class="row mb-4">
+                <div class="col-lg-6">
+                    <div class="info-card">
+                        <div class="info-icon bg-primary">
+                            <i class="bi bi-tag-fill"></i>
+                        </div>
+                        <div class="info-content">
+                            <h5>Group Code</h5>
+                            <p class="mb-0">CC-GROUP-07</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="info-card">
+                        <div class="info-icon bg-info">
+                            <i class="bi bi-calendar-event"></i>
+                        </div>
+                        <div class="info-content">
+                            <h5>Session</h5>
+                            <p class="mb-0">Fall 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-lg-6">
+                    <div class="info-card">
+                        <div class="info-icon bg-warning">
+                            <i class="bi bi-book-fill"></i>
+                        </div>
+                        <div class="info-content">
+                            <h5>Course</h5>
+                            <p class="mb-0">Cloud Computing</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="info-card">
+                        <div class="info-icon bg-danger">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <div class="info-content">
+                            <h5>Project Type</h5>
+                            <p class="mb-0">Cloud-Based Web Application</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Lead -->
+            <div class="team-lead-card mb-4">
+                <div class="team-lead-header">
+                    <i class="bi bi-person-badge-fill"></i>
+                    <h4>Project Lead</h4>
+                </div>
+                <div class="team-lead-info">
+                    <div class="member-avatar">
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+                    <div>
+                        <h5 class="mb-1">Asfandyar Khanzada</h5>
+                        <p class="mb-0 text-muted">Student ID: 22k-4626</p>
+                        <div class="badges mt-2">
+                            <span class="badge bg-primary">Team Lead</span>
+                            <span class="badge bg-info">Backend Development</span>
+                            <span class="badge bg-success">Azure Infrastructure</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Members -->
+            <div class="team-members-section">
+                <h4 class="mb-4"><i class="bi bi-people me-2"></i>Team Members</h4>
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="team-member-card-detailed">
+                            <div class="member-avatar-small">
+                                <i class="bi bi-person-circle"></i>
+                            </div>
+                            <div class="member-info">
+                                <h5>Anas Ashfaq</h5>
+                                <p class="text-muted mb-2">Student ID: 22k-4310</p>
+                                <div class="member-role">
+                                    <i class="bi bi-code-slash"></i>
+                                    <span>Frontend Development</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="team-member-card-detailed">
+                            <div class="member-avatar-small">
+                                <i class="bi bi-person-circle"></i>
+                            </div>
+                            <div class="member-info">
+                                <h5>Asim Ali</h5>
+                                <p class="text-muted mb-2">Student ID: 22k-4161</p>
+                                <div class="member-role">
+                                    <i class="bi bi-database"></i>
+                                    <span>Database Design</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="team-member-card-detailed">
+                            <div class="member-avatar-small">
+                                <i class="bi bi-person-circle"></i>
+                            </div>
+                            <div class="member-info">
+                                <h5>Anas Khan</h5>
+                                <p class="text-muted mb-2">Student ID: 22k-4483</p>
+                                <div class="member-role">
+                                    <i class="bi bi-shield-check"></i>
+                                    <span>Security & Authentication</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="team-member-card-detailed">
+                            <div class="member-avatar-small">
+                                <i class="bi bi-person-circle"></i>
+                            </div>
+                            <div class="member-info">
+                                <h5>Mohammad Anas</h5>
+                                <p class="text-muted mb-2">Student ID: 22k-4548</p>
+                                <div class="member-role">
+                                    <i class="bi bi-graph-up"></i>
+                                    <span>Testing & Quality Assurance</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="team-member-card-detailed">
+                            <div class="member-avatar-small">
+                                <i class="bi bi-person-circle"></i>
+                            </div>
+                            <div class="member-info">
+                                <h5>Ahsan Ali</h5>
+                                <p class="text-muted mb-2">Student ID: 22k-4176</p>
+                                <div class="member-role">
+                                    <i class="bi bi-palette"></i>
+                                    <span>UI/UX Design</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="team-member-card-detailed">
+                            <div class="member-avatar-small">
+                                <i class="bi bi-person-circle"></i>
+                            </div>
+                            <div class="member-info">
+                                <h5>Zain ul Abideen</h5>
+                                <p class="text-muted mb-2">Student ID: 22k-4476</p>
+                                <div class="member-role">
+                                    <i class="bi bi-file-text"></i>
+                                    <span>Documentation & API Integration</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Plan -->
+    <div class="card shadow-lg border-0 mb-5">
+        <div class="card-header bg-warning text-dark">
+            <h2 class="h3 mb-0"><i class="bi bi-calendar-check me-2"></i>Project Plan & Timeline</h2>
+        </div>
+        <div class="card-body p-4">
+            <p class="lead mb-4">Our comprehensive 14-week development plan ensures systematic delivery of a production-ready cloud application.</p>
+            
+            <div class="timeline-container">
+                <!-- Phase 1 -->
+                <div class="timeline-phase">
+                    <div class="phase-badge bg-primary">Phase 1</div>
+                    <div class="phase-content">
+                        <h4>Planning & Design</h4>
+                        <p class="text-muted mb-3"><i class="bi bi-calendar3"></i> Week 1-2</p>
+                        <ul class="phase-tasks">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Requirements gathering and analysis</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> System design and architecture planning</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Database schema design</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> UI/UX wireframing and prototyping</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Technology stack finalization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="timeline-phase">
+                    <div class="phase-badge bg-success">Phase 2</div>
+                    <div class="phase-content">
+                        <h4>Azure Infrastructure Setup</h4>
+                        <p class="text-muted mb-3"><i class="bi bi-calendar3"></i> Week 3-4</p>
+                        <ul class="phase-tasks">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Azure subscription and resource group setup</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Azure App Service configuration</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Azure SQL Database provisioning</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Azure Blob Storage setup</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Azure API Management configuration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="timeline-phase">
+                    <div class="phase-badge bg-info">Phase 3</div>
+                    <div class="phase-content">
+                        <h4>Backend Development</h4>
+                        <p class="text-muted mb-3"><i class="bi bi-calendar3"></i> Week 5-7</p>
+                        <ul class="phase-tasks">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> REST API development with ASP.NET Core</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Authentication and authorization implementation</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Business logic and data access layers</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Payment gateway integration</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Real-time notification system</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="timeline-phase">
+                    <div class="phase-badge bg-warning">Phase 4</div>
+                    <div class="phase-content">
+                        <h4>Frontend Development</h4>
+                        <p class="text-muted mb-3"><i class="bi bi-calendar3"></i> Week 8-10</p>
+                        <ul class="phase-tasks">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Responsive UI development with Razor Pages</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Modern animations and interactions</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> API integration and data binding</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Cart and checkout functionality</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Order tracking interface</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 5 -->
+                <div class="timeline-phase">
+                    <div class="phase-badge bg-danger">Phase 5</div>
+                    <div class="phase-content">
+                        <h4>Testing & Deployment</h4>
+                        <p class="text-muted mb-3"><i class="bi bi-calendar3"></i> Week 11-12</p>
+                        <ul class="phase-tasks">
+                            <li><i class="bi bi-arrow-right-circle-fill text-primary"></i> Unit testing and integration testing</li>
+                            <li><i class="bi bi-arrow-right-circle-fill text-primary"></i> Performance testing and optimization</li>
+                            <li><i class="bi bi-arrow-right-circle-fill text-primary"></i> Security testing and vulnerability assessment</li>
+                            <li><i class="bi bi-arrow-right-circle-fill text-primary"></i> Production deployment to Azure</li>
+                            <li><i class="bi bi-arrow-right-circle-fill text-primary"></i> CI/CD pipeline configuration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 6 -->
+                <div class="timeline-phase">
+                    <div class="phase-badge bg-secondary">Phase 6</div>
+                    <div class="phase-content">
+                        <h4>Documentation & Presentation</h4>
+                        <p class="text-muted mb-3"><i class="bi bi-calendar3"></i> Week 13-14</p>
+                        <ul class="phase-tasks">
+                            <li><i class="bi bi-arrow-right-circle-fill text-primary"></i> Technical documentation</li>
+                            <li><i class="bi bi-arrow-right-circle-fill text-primary"></i> User manuals and guides</li>
+                            <li><i class="bi bi-arrow-right-circle-fill text-primary"></i> API documentation</li>
+                            <li><i class="bi bi-arrow-right-circle-fill text-primary"></i> Project presentation preparation</li>
+                            <li><i class="bi bi-arrow-right-circle-fill text-primary"></i> Final submission and demo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Deliverables -->
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-dark text-white">
+            <h2 class="h3 mb-0"><i class="bi bi-trophy me-2"></i>Key Deliverables</h2>
+        </div>
+        <div class="card-body p-4">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="deliverable-item">
+                        <div class="deliverable-icon bg-primary">
+                            <i class="bi bi-globe"></i>
+                        </div>
+                        <div>
+                            <h5>Functional Web Application</h5>
+                            <p class="text-muted mb-0">Fully operational restaurant ordering system deployed on Azure</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="deliverable-item">
+                        <div class="deliverable-icon bg-success">
+                            <i class="bi bi-cloud-check"></i>
+                        </div>
+                        <div>
+                            <h5>Azure Infrastructure</h5>
+                            <p class="text-muted mb-0">Complete cloud infrastructure with scalable architecture</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="deliverable-item">
+                        <div class="deliverable-icon bg-info">
+                            <i class="bi bi-file-text"></i>
+                        </div>
+                        <div>
+                            <h5>Documentation</h5>
+                            <p class="text-muted mb-0">Comprehensive technical and user documentation</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="deliverable-item">
+                        <div class="deliverable-icon bg-warning">
+                            <i class="bi bi-presentation"></i>
+                        </div>
+                        <div>
+                            <h5>Final Presentation</h5>
+                            <p class="text-muted mb-0">Project demonstration and technical presentation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

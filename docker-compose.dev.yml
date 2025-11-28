@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  # Development Web Application
+  feast-fetch-web-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: feast-fetch-web-dev
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+    volumes:
+      # Mount source code for hot reload
+      - .:/app
+      - /app/bin
+      - /app/obj
+      - ./appsettings.Development.json:/app/appsettings.Development.json:ro
+    restart: unless-stopped
+    networks:
+      - feast-fetch-dev-network
+
+networks:
+  feast-fetch-dev-network:
+    driver: bridge
+

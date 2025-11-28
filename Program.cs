@@ -10,9 +10,18 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
     app.UseHsts();
+    app.UseHttpsRedirection();
+}
+else
+{
+    // In development, only use HTTPS redirection if HTTPS is configured
+    var httpsPort = app.Configuration["ASPNETCORE_HTTPS_PORT"];
+    if (!string.IsNullOrEmpty(httpsPort))
+    {
+        app.UseHttpsRedirection();
+    }
 }
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();

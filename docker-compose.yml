@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  # Frontend Web Application
+  feast-fetch-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: feast-fetch-web
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+    volumes:
+      # Mount appsettings for easy configuration updates
+      - ./appsettings.json:/app/appsettings.json:ro
+      - ./appsettings.Development.json:/app/appsettings.Development.json:ro
+    restart: unless-stopped
+    networks:
+      - feast-fetch-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Backend API (Placeholder for future implementation)
+  # Uncomment and configure when backend is ready
+  # feast-fetch-api:
+  #   build:
+  #     context: ./backend  # Update path when backend is added
+  #     dockerfile: Dockerfile
+  #   container_name: feast-fetch-api
+  #   ports:
+  #     - "5002:5002"
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Production
+  #     - ASPNETCORE_URLS=http://+:5002
+  #   volumes:
+  #     - ./backend/appsettings.json:/app/appsettings.json:ro
+  #   restart: unless-stopped
+  #   networks:
+  #     - feast-fetch-network
+  #   depends_on:
+  #     - feast-fetch-db  # If using database
+
+  # Database (Placeholder for future implementation)
+  # Uncomment and configure when database is needed
+  # feast-fetch-db:
+  #   image: postgres:15-alpine
+  #   container_name: feast-fetch-db
+  #   environment:
+  #     - POSTGRES_DB=feastfetch
+  #     - POSTGRES_USER=feastfetch_user
+  #     - POSTGRES_PASSWORD=feastfetch_password
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - feast-fetch-db-data:/var/lib/postgresql/data
+  #   restart: unless-stopped
+  #   networks:
+  #     - feast-fetch-network
+
+networks:
+  feast-fetch-network:
+    driver: bridge
+
+# Uncomment when database is added
+# volumes:
+#   feast-fetch-db-data:
+

@@ -35,7 +35,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item logged-in-only" style="display: none;">
+                    <li class="nav-item">
                         <a class="nav-link" href="/">
                             <i class="bi bi-house-door"></i>Home
                         </a>
@@ -319,13 +319,11 @@
             const guestMenus = document.querySelectorAll('.guest-menu');
             const userDropdown = document.getElementById('userDropdown');
             const userName = document.getElementById('userName');
-            const loggedInOnlyItems = document.querySelectorAll('.logged-in-only');
             
             if (currentUser) {
                 // User is logged in
                 guestMenus.forEach(menu => menu.style.display = 'none');
                 userDropdown.style.display = 'block';
-                loggedInOnlyItems.forEach(item => item.style.display = 'block');
                 
                 if (userName) {
                     userName.textContent = currentUser.fullName || currentUser.email || 'User';
@@ -336,6 +334,10 @@
                     ownerMenus.forEach(menu => menu.style.display = 'block');
                 } else {
                     customerMenus.forEach(menu => menu.style.display = 'block');
+                    // Show logged-in-only items for customers
+                    document.querySelectorAll('.logged-in-only').forEach(item => {
+                        item.style.display = 'block';
+                    });
                     ownerMenus.forEach(menu => {
                         if (!menu.classList.contains('nav-item')) {
                             menu.style.display = 'none';
@@ -348,8 +350,8 @@
                 ownerMenus.forEach(menu => menu.style.display = 'none');
                 userDropdown.style.display = 'none';
                 guestMenus.forEach(menu => menu.style.display = 'block');
-                // Hide logged-in-only items (including Home)
-                loggedInOnlyItems.forEach(item => {
+                // Hide logged-in-only items
+                document.querySelectorAll('.logged-in-only').forEach(item => {
                     item.style.display = 'none';
                 });
             }

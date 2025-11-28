@@ -1,0 +1,210 @@
+@page
+@model FeastFetch.Pages.RestaurantOwner.SettingsModel
+@{
+    ViewData["Title"] = "Restaurant Settings";
+}
+
+<div class="page-header text-white text-center">
+    <div class="container">
+        <h1 class="display-3 fw-bold"><i class="bi bi-gear me-3"></i>Restaurant Settings</h1>
+        <p class="lead">Manage your restaurant information</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0"><i class="bi bi-shop me-2"></i>Restaurant Information</h3>
+                </div>
+                <div class="card-body p-5">
+                    <form id="restaurantSettingsForm">
+                        <div class="mb-4">
+                            <label for="restaurantName" class="form-label fw-semibold">
+                                <i class="bi bi-shop me-2"></i>Restaurant Name *
+                            </label>
+                            <input type="text" class="form-control form-control-lg" id="restaurantName" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="restaurantDescription" class="form-label fw-semibold">
+                                <i class="bi bi-text-paragraph me-2"></i>Description *
+                            </label>
+                            <textarea class="form-control" id="restaurantDescription" rows="4" required></textarea>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label for="restaurantCuisine" class="form-label fw-semibold">
+                                    <i class="bi bi-tag me-2"></i>Cuisine Type *
+                                </label>
+                                <select class="form-select form-select-lg" id="restaurantCuisine" required>
+                                    <option value="">Select cuisine</option>
+                                    <option value="Italian">Italian</option>
+                                    <option value="Asian">Asian</option>
+                                    <option value="American">American</option>
+                                    <option value="Japanese">Japanese</option>
+                                    <option value="Healthy">Healthy</option>
+                                    <option value="Desserts">Desserts</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <label for="restaurantPhone" class="form-label fw-semibold">
+                                    <i class="bi bi-telephone me-2"></i>Phone Number *
+                                </label>
+                                <input type="tel" class="form-control form-control-lg" id="restaurantPhone" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="restaurantAddress" class="form-label fw-semibold">
+                                <i class="bi bi-geo-alt me-2"></i>Address *
+                            </label>
+                            <input type="text" class="form-control form-control-lg" id="restaurantAddress" required>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label for="restaurantEmail" class="form-label fw-semibold">
+                                    <i class="bi bi-envelope me-2"></i>Email *
+                                </label>
+                                <input type="email" class="form-control form-control-lg" id="restaurantEmail" required>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <label for="priceRange" class="form-label fw-semibold">
+                                    <i class="bi bi-currency-dollar me-2"></i>Price Range *
+                                </label>
+                                <select class="form-select form-select-lg" id="priceRange" required>
+                                    <option value="$">$ - Budget</option>
+                                    <option value="$$">$$ - Moderate</option>
+                                    <option value="$$$">$$$ - Premium</option>
+                                    <option value="$$$$">$$$$ - Luxury</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="restaurantImage" class="form-label fw-semibold">
+                                <i class="bi bi-image me-2"></i>Restaurant Image
+                            </label>
+                            <input type="file" class="form-control form-control-lg" id="restaurantImage" accept="image/*">
+                            <small class="text-muted">Upload a logo or image for your restaurant</small>
+                            <div id="imagePreview" class="mt-3" style="display: none;">
+                                <img id="previewImg" src="" alt="Preview" class="img-thumbnail" style="max-width: 300px; max-height: 300px;">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="restaurantActive" checked>
+                                <label class="form-check-label" for="restaurantActive">
+                                    Restaurant Active (Visible to customers)
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-danger" id="formError" style="display: none;"></div>
+                        <div class="alert alert-success" id="formSuccess" style="display: none;"></div>
+
+                        <div class="d-flex gap-3">
+                            <button type="submit" class="btn btn-primary btn-lg flex-fill">
+                                <i class="bi bi-check-circle me-2"></i>Save Changes
+                            </button>
+                            <a href="/RestaurantOwner/Dashboard" class="btn btn-outline-secondary btn-lg">
+                                <i class="bi bi-arrow-left me-2"></i>Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Check authentication
+        const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+        if (!currentUser || currentUser.userType !== 'RestaurantOwner') {
+            window.location.href = '/Login';
+        }
+        
+        // Load current restaurant data
+        function loadRestaurantData() {
+            const restaurant = currentUser.restaurant || {};
+            
+            document.getElementById('restaurantName').value = restaurant.name || '';
+            document.getElementById('restaurantDescription').value = restaurant.description || '';
+            document.getElementById('restaurantCuisine').value = restaurant.cuisine || '';
+            document.getElementById('restaurantPhone').value = restaurant.phone || '';
+            document.getElementById('restaurantAddress').value = restaurant.address || '';
+            document.getElementById('restaurantEmail').value = restaurant.email || currentUser.email || '';
+            document.getElementById('priceRange').value = restaurant.priceRange || '$$';
+            document.getElementById('restaurantActive').checked = restaurant.isActive !== false;
+            
+            if (restaurant.imageUrl) {
+                document.getElementById('previewImg').src = restaurant.imageUrl;
+                document.getElementById('imagePreview').style.display = 'block';
+            }
+        }
+        
+        // Image preview
+        document.getElementById('restaurantImage').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('previewImg').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Save settings
+        document.getElementById('restaurantSettingsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!currentUser.restaurant) {
+                currentUser.restaurant = {};
+            }
+            
+            currentUser.restaurant.name = document.getElementById('restaurantName').value;
+            currentUser.restaurant.description = document.getElementById('restaurantDescription').value;
+            currentUser.restaurant.cuisine = document.getElementById('restaurantCuisine').value;
+            currentUser.restaurant.phone = document.getElementById('restaurantPhone').value;
+            currentUser.restaurant.address = document.getElementById('restaurantAddress').value;
+            currentUser.restaurant.email = document.getElementById('restaurantEmail').value;
+            currentUser.restaurant.priceRange = document.getElementById('priceRange').value;
+            currentUser.restaurant.isActive = document.getElementById('restaurantActive').checked;
+            
+            if (document.getElementById('previewImg').src) {
+                currentUser.restaurant.imageUrl = document.getElementById('previewImg').src;
+            }
+            
+            // Save to localStorage
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const userIndex = users.findIndex(u => u.id === currentUser.id);
+            if (userIndex !== -1) {
+                users[userIndex] = currentUser;
+                localStorage.setItem('users', JSON.stringify(users));
+            }
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            
+            // Show success message
+            document.getElementById('formSuccess').textContent = 'Settings saved successfully!';
+            document.getElementById('formSuccess').style.display = 'block';
+            document.getElementById('formError').style.display = 'none';
+            
+            setTimeout(() => {
+                document.getElementById('formSuccess').style.display = 'none';
+            }, 3000);
+        });
+        
+        loadRestaurantData();
+    </script>
+}
+

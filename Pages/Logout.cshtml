@@ -1,0 +1,16 @@
+@page
+@model FeastFetch.Pages.LogoutModel
+@{
+    ViewData["Title"] = "Logout";
+}
+
+@section Scripts {
+    <script>
+        // Clear current user
+        localStorage.removeItem('currentUser');
+        
+        // Redirect to home
+        window.location.href = '/';
+    </script>
+}
+

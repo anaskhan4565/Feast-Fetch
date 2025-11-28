@@ -4,6 +4,16 @@
     ViewData["Title"] = "Home";
 }
 
+@section Scripts {
+    <script>
+        // Check authentication on page load
+        const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+        if (!currentUser) {
+            window.location.href = '/Login';
+        }
+    </script>
+}
+
 <!-- Hero Section with Restaurant Ordering Theme -->
 <div class="restaurant-hero-section">
     <div class="container">

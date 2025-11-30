@@ -2884,3 +2884,132 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.7;
 }
 
+/* ================================
+   MODAL FIX - Z-INDEX & STACKING
+   ================================ */
+
+/* Ensure modal backdrop appears above all content */
+.modal-backdrop {
+    z-index: 1040 !important;
+}
+
+/* Ensure modal dialog appears above backdrop */
+.modal {
+    z-index: 1050 !important;
+}
+
+.modal-dialog {
+    z-index: 1055 !important;
+}
+
+/* Fix for backdrop-filter stacking context issues */
+.modal.show {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal.show .modal-dialog {
+    transform: none;
+}
+
+/* Ensure modal content is above everything */
+.modal-content {
+    position: relative;
+    z-index: 1060 !important;
+    box-shadow: var(--shadow-xl);
+    border: none;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+/* Override card hover effects inside modals */
+.modal .card {
+    transform: none !important;
+}
+
+.modal .card:hover {
+    transform: none !important;
+}
+
+/* Modal header styling */
+.modal-header {
+    border-bottom: none;
+    padding: 1.5rem;
+}
+
+.modal-header.bg-primary {
+    background: var(--gradient-primary) !important;
+}
+
+.modal-header.bg-danger {
+    background: var(--gradient-vibrant) !important;
+}
+
+/* Modal body styling */
+.modal-body {
+    padding: 1.5rem;
+}
+
+/* Modal footer styling */
+.modal-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem 1.5rem;
+}
+
+/* When modal is open, ensure body doesn't have conflicting styles */
+body.modal-open {
+    overflow: hidden !important;
+    padding-right: 0 !important;
+}
+
+/* Fix any issues with the animated background when modal is open */
+body.modal-open::before {
+    z-index: -1 !important;
+}
+
+/* ================================
+   CUSTOM DIALOG STYLES
+   ================================ */
+
+/* Custom dialog overlay animation */
+#deleteOrderConfirm,
+#editItemDialog {
+    animation: fadeIn 0.2s ease-out;
+}
+
+#deleteOrderConfirm .card,
+#editItemDialog .card {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Dialog card styling overrides */
+#deleteOrderConfirm .card,
+#editItemDialog .card {
+    transform: none !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+}
+
+#deleteOrderConfirm .card:hover,
+#editItemDialog .card:hover {
+    transform: none !important;
+}
+

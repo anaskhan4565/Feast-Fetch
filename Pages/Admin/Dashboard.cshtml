@@ -107,7 +107,7 @@
     </div>
 
     <!-- Menu Items List -->
-    <div class="card shadow-lg border-0">
+    <div class="card shadow-lg border-0 mb-5">
         <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
             <h4 class="mb-0"><i class="bi bi-card-list me-2"></i>Menu Items</h4>
             <button class="btn btn-light btn-sm" onclick="loadMenuItems()">
@@ -125,19 +125,37 @@
             </div>
         </div>
     </div>
+
+    <!-- Orders List -->
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0"><i class="bi bi-box-seam me-2"></i>All Orders</h4>
+            <button class="btn btn-light btn-sm" onclick="loadOrders()">
+                <i class="bi bi-arrow-clockwise me-1"></i>Refresh
+            </button>
+        </div>
+        <div class="card-body p-4">
+            <div id="ordersList" class="row g-4">
+                <div class="col-12 text-center py-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-3 text-muted">Loading orders...</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- Edit Menu Item Modal -->
-<div class="modal fade" id="editItemModal" tabindex="-1" aria-labelledby="editItemModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="editItemModalLabel">
-                    <i class="bi bi-pencil me-2"></i>Edit Menu Item
-                </h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- Edit Menu Item Dialog - Inline Style -->
+<div id="editItemDialog" class="position-fixed top-0 start-0 w-100 h-100" style="display: none; z-index: 9999; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); overflow-y: auto;">
+    <div class="d-flex align-items-start justify-content-center py-4" style="min-height: 100%;">
+        <div class="card shadow-lg border-0 my-4" style="max-width: 600px; width: 95%; border-radius: 16px; overflow: hidden;">
+            <div class="card-header bg-primary text-white py-3 d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="bi bi-pencil me-2"></i>Edit Menu Item</h5>
+                <button type="button" class="btn-close btn-close-white" id="closeEditDialog" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="card-body p-4">
                 <form id="editMenuItemForm">
                     <input type="hidden" id="editItemId">
                     <div class="mb-3">
@@ -185,8 +203,8 @@
                     <div class="alert alert-success" id="editSuccessMessage" style="display: none;"></div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <div class="card-footer bg-white border-0 d-flex gap-2 justify-content-end p-3">
+                <button type="button" class="btn btn-secondary" id="cancelEditBtn">Cancel</button>
                 <button type="button" class="btn btn-primary" id="updateMenuItemButton">
                     <i class="bi bi-check-circle me-2"></i>Update Menu Item
                 </button>
@@ -206,23 +224,43 @@
             window.location.href = '/Login';
         }
         
-        // Store modal instance to prevent multiple instances
-        let editItemModalInstance = null;
-        
-        // Helper function to clean up modal backdrop
-        function cleanupModalBackdrop() {
-            document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-            document.body.classList.remove('modal-open');
-            document.body.style.overflow = '';
-            document.body.style.paddingRight = '';
+        // Show/hide the edit dialog
+        function showEditDialog(show) {
+            const dialog = document.getElementById('editItemDialog');
+            if (show) {
+                dialog.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            } else {
+                dialog.style.display = 'none';
+                document.body.style.overflow = '';
+            }
         }
         
-        // Add event listener to clean up backdrop when modal is hidden
+        // Set up dialog close handlers
         document.addEventListener('DOMContentLoaded', function() {
-            const editModal = document.getElementById('editItemModal');
-            if (editModal) {
-                editModal.addEventListener('hidden.bs.modal', cleanupModalBackdrop);
-            }
+            // Close button handler
+            document.getElementById('closeEditDialog').addEventListener('click', function() {
+                showEditDialog(false);
+            });
+            
+            // Cancel button handler
+            document.getElementById('cancelEditBtn').addEventListener('click', function() {
+                showEditDialog(false);
+            });
+            
+            // Close on backdrop click
+            document.getElementById('editItemDialog').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    showEditDialog(false);
+                }
+            });
+            
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && document.getElementById('editItemDialog').style.display === 'block') {
+                    showEditDialog(false);
+                }
+            });
         });
 
         // Image preview
@@ -240,8 +278,14 @@
             }
         });
 
+        // Store menu items map for order display
+        let menuItemsMap = {};
+        
         // Load menu items on page load
         loadMenuItems();
+        
+        // Load orders on page load
+        loadOrders();
 
         // Handle form submission
         document.getElementById('addMenuItemForm').addEventListener('submit', async function(e) {
@@ -393,6 +437,16 @@
                 // Store menu items for edit function
                 currentMenuItems = categories;
                 
+                // Build menu items map for order display
+                menuItemsMap = {};
+                categories.forEach(cat => {
+                    if (cat.items) {
+                        cat.items.forEach(item => {
+                            menuItemsMap[item.id] = item;
+                        });
+                    }
+                });
+                
                 // Count total items
                 let totalItems = 0;
                 categories.forEach(cat => {
@@ -458,6 +512,8 @@
         
         // Store current menu items for edit modal
         let currentMenuItems = [];
+        // Store original item data for comparison during update
+        let originalItemData = null;
         
         // Edit menu item - opens modal with item data
         async function editMenuItem(itemId) {
@@ -481,6 +537,16 @@
                 alert('Menu item not found. Please refresh the page.');
                 return;
             }
+            
+            // Store original item data for comparison
+            originalItemData = {
+                id: item.id,
+                name: item.name || '',
+                description: item.description || '',
+                category: item.category || itemCategory || '',
+                price: item.price || '',
+                available: item.available !== false ? 'true' : 'false'
+            };
             
             // Populate edit form
             document.getElementById('editItemId').value = item.id;
@@ -521,12 +587,8 @@
             document.getElementById('editErrorMessage').style.display = 'none';
             document.getElementById('editSuccessMessage').style.display = 'none';
             
-            // Show modal - use single instance to prevent backdrop issues
-            const modalEl = document.getElementById('editItemModal');
-            if (!editItemModalInstance) {
-                editItemModalInstance = new bootstrap.Modal(modalEl);
-            }
-            editItemModalInstance.show();
+            // Show the edit dialog
+            showEditDialog(true);
         }
         
         // Handle edit form image preview
@@ -543,6 +605,7 @@
         });
         
         // Handle update menu item
+        
         document.getElementById('updateMenuItemButton').addEventListener('click', async function() {
             const form = document.getElementById('editMenuItemForm');
             if (!form.checkValidity()) {
@@ -574,36 +637,55 @@
             try {
                 const apiUrl = `https://feastfetchfunctionappk224626-fjfadrgzcgfwcqev.centralindia-01.azurewebsites.net/api/admin/menu/${itemId}`;
 
-                // Always send JSON directly (do not use FormData, do not send images)
-                const body = JSON.stringify({
-                    name: name,
-                    description: description,
-                    price: price,
-                    category: category,
-                    available: available
-                });
-
-                // Get secret key directly for authentication
-                let secretKey = localStorage.getItem('adminSecretKey');
-                if (!secretKey) {
-                    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
-                    if (currentUser && currentUser.secretKey) {
-                        secretKey = currentUser.secretKey;
-                        localStorage.setItem('adminSecretKey', secretKey);
+                // Build request body with ONLY changed fields (API expects partial updates)
+                const requestBody = {};
+                
+                // Only include fields that have actually changed
+                if (originalItemData) {
+                    if (name !== originalItemData.name) {
+                        requestBody.name = name;
                     }
+                    if (description !== originalItemData.description) {
+                        requestBody.description = description;
+                    }
+                    if (category !== originalItemData.category) {
+                        requestBody.category = category;
+                    }
+                    if (String(price) !== String(originalItemData.price)) {
+                        requestBody.price = String(price);
+                    }
+                    if (String(available) !== String(originalItemData.available)) {
+                        requestBody.available = String(available);
+                    }
+                } else {
+                    // Fallback: if original data not available, send all fields
+                    // (shouldn't happen, but safety fallback)
+                    requestBody.name = name;
+                    requestBody.description = description;
+                    requestBody.category = category;
+                    requestBody.price = String(price);
+                    requestBody.available = String(available);
                 }
-                if (!secretKey) throw new Error('Admin secret key not found. Please login again.');
 
-                const response = await fetch(apiUrl, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: body
+                console.log('=== UPDATE MENU ITEM DEBUG ===');
+                console.log('URL:', apiUrl);
+                console.log('Item ID:', itemId);
+                console.log('Original Data:', originalItemData);
+                console.log('Request Body (only changed fields):', JSON.stringify(requestBody, null, 2));
+                console.log('Admin Secret Key exists:', !!AdminUtils.getSecretKey());
+
+                // Use AdminUtils which handles auth headers
+                // API expects PATCH method, not PUT
+                const response = await AdminUtils.adminApiCall(apiUrl, {
+                    method: 'PATCH',
+                    body: JSON.stringify(requestBody)
                 });
 
+                console.log('Response Status:', response.status, response.statusText);
+                
                 const responseText = await response.text();
-                console.log('Update response:', responseText);
+                console.log('Response Body (raw):', responseText);
+                console.log('=== END DEBUG ===');
 
                 let data;
                 try {
@@ -623,14 +705,10 @@
                     // Reload menu items
                     loadMenuItems();
                     
-                    // Close modal after 1.5 seconds
+                    // Close dialog after 1.5 seconds
                     setTimeout(() => {
-                        if (editItemModalInstance) {
-                            editItemModalInstance.hide();
-                        }
+                        showEditDialog(false);
                         successMessage.style.display = 'none';
-                        // Clean up any stuck backdrops
-                        setTimeout(cleanupModalBackdrop, 300);
                     }, 1500);
                 } else {
                     throw new Error(data.message || `Server returned ${response.status} ${response.statusText}`);
@@ -691,6 +769,227 @@
             } catch (error) {
                 console.error('Error deleting menu item:', error);
                 alert('Failed to delete menu item: ' + (error.message || 'Please try again.'));
+            }
+        }
+        
+        // Load all orders from admin API
+        async function loadOrders() {
+            const container = document.getElementById('ordersList');
+            
+            try {
+                container.innerHTML = `
+                    <div class="col-12 text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-3 text-muted">Loading orders...</p>
+                    </div>
+                `;
+                
+                const apiUrl = 'https://feastfetchfunctionappk224626-fjfadrgzcgfwcqev.centralindia-01.azurewebsites.net/api/admin/orders';
+                
+                const response = await AdminUtils.adminApiCall(apiUrl, {
+                    method: 'GET'
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Failed to load orders: ${response.status} ${response.statusText}`);
+                }
+                
+                const orders = await response.json();
+                console.log('Loaded orders:', orders);
+                
+                // Update stats
+                const totalOrders = orders.length || 0;
+                const pendingOrders = orders.filter(o => o.status && o.status.toLowerCase() === 'pending').length || 0;
+                
+                document.getElementById('totalOrders').textContent = totalOrders;
+                document.getElementById('pendingOrders').textContent = pendingOrders;
+                
+                // Render orders
+                if (orders.length === 0) {
+                    container.innerHTML = `
+                        <div class="col-12 text-center py-5">
+                            <i class="bi bi-inbox" style="font-size: 4rem; color: var(--gray-light);"></i>
+                            <h4 class="mt-3 text-muted">No orders yet</h4>
+                            <p class="text-muted">Orders will appear here when customers place them</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                container.innerHTML = orders.map(order => renderOrderCard(order)).join('');
+                
+            } catch (error) {
+                console.error('Error loading orders:', error);
+                container.innerHTML = `
+                    <div class="col-12">
+                        <div class="alert alert-danger">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            Failed to load orders: ${error.message || 'Please try again.'}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // Render order card
+        function renderOrderCard(order) {
+            const status = (order.status || 'pending').toLowerCase();
+            const statusColor = status === 'completed' ? 'success' : 
+                               status === 'cancelled' ? 'danger' : 
+                               status === 'processing' ? 'info' : 'warning';
+            
+            // Render items
+            let itemsHtml = '';
+            let itemsTotal = 0;
+            
+            if (order.items && order.items.length > 0) {
+                itemsHtml = order.items.map(item => {
+                    const menuItem = menuItemsMap[item.id];
+                    const itemName = menuItem ? menuItem.name : `Item ${item.id.substring(0, 8)}`;
+                    const itemDescription = menuItem ? menuItem.description : '';
+                    const itemImageUrl = menuItem ? menuItem.imageUrl : null;
+                    const price = menuItem ? parseFloat(menuItem.price) || 0 : 0;
+                    const qty = parseInt(item.quantity) || 1;
+                    const itemTotal = price * qty;
+                    itemsTotal += itemTotal;
+                    
+                    return `
+                        <div class="d-flex align-items-center py-2 border-bottom">
+                            ${itemImageUrl ? 
+                                `<img src="${itemImageUrl}" alt="${itemName}" class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">` : 
+                                `<div class="bg-light rounded me-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;"><i class="bi bi-image text-muted"></i></div>`
+                            }
+                            <div class="flex-grow-1">
+                                <strong>${itemName}</strong>
+                                ${itemDescription ? `<p class="mb-0 text-muted small">${itemDescription}</p>` : ''}
+                                <small class="text-muted">Qty: ${qty} × $${price.toFixed(2)}</small>
+                            </div>
+                            <strong>$${itemTotal.toFixed(2)}</strong>
+                        </div>
+                    `;
+                }).join('');
+            }
+            
+            // Status options
+            const statusOptions = ['pending', 'processing', 'completed', 'cancelled'];
+            const currentStatus = order.status || 'pending';
+            
+            return `
+                <div class="col-lg-6">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="mb-0">Order #${order.id.substring(0, 8)}</h5>
+                                <small>${new Date(order.createdAt).toLocaleString()}</small>
+                            </div>
+                            <span class="badge bg-${statusColor} fs-6 text-capitalize">${currentStatus}</span>
+                        </div>
+                        <div class="card-body">
+                            <!-- Customer Info -->
+                            <div class="mb-3">
+                                <h6 class="text-muted"><i class="bi bi-person me-2"></i>Customer</h6>
+                                <p class="mb-0"><strong>${order.customer?.name || 'N/A'}</strong></p>
+                                <p class="mb-0 text-muted">${order.customer?.phone || 'N/A'}</p>
+                            </div>
+                            
+                            <!-- Items -->
+                            <div class="mb-3">
+                                <h6 class="text-muted"><i class="bi bi-bag me-2"></i>Items</h6>
+                                ${itemsHtml || '<p class="text-muted">No items</p>'}
+                            </div>
+                            
+                            <!-- Total -->
+                            <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                                <strong>Total</strong>
+                                <strong class="fs-5 text-primary">$${itemsTotal.toFixed(2)}</strong>
+                            </div>
+                            
+                            ${order.notes ? `
+                                <div class="mt-3 p-2 bg-light rounded">
+                                    <small class="text-muted"><i class="bi bi-sticky me-1"></i>Notes: ${order.notes}</small>
+                                </div>
+                            ` : ''}
+                            
+                            <!-- Status Update -->
+                            <div class="mt-3">
+                                <label for="statusSelect_${order.id}" class="form-label fw-semibold small">Update Status</label>
+                                <div class="input-group">
+                                    <select class="form-select" id="statusSelect_${order.id}">
+                                        ${statusOptions.map(opt => 
+                                            `<option value="${opt}" ${opt.toLowerCase() === currentStatus.toLowerCase() ? 'selected' : ''}>${opt}</option>`
+                                        ).join('')}
+                                    </select>
+                                    <button class="btn btn-outline-primary" onclick="updateOrderStatus('${order.id}')" id="updateBtn_${order.id}">
+                                        <i class="bi bi-check-lg"></i> Update
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Update order status
+        async function updateOrderStatus(orderId) {
+            const statusSelect = document.getElementById(`statusSelect_${orderId}`);
+            const newStatus = statusSelect.value;
+            
+            if (!newStatus || !newStatus.trim()) {
+                alert('Please select a valid status');
+                return;
+            }
+            
+            const updateBtn = document.getElementById(`updateBtn_${orderId}`);
+            const originalText = updateBtn.innerHTML;
+            
+            updateBtn.disabled = true;
+            statusSelect.disabled = true;
+            updateBtn.innerHTML = '<span class="spinner-border spinner-border-sm"></span>';
+            
+            try {
+                const apiUrl = `https://feastfetchfunctionappk224626-fjfadrgzcgfwcqev.centralindia-01.azurewebsites.net/api/admin/order/${orderId}/status`;
+                
+                const response = await AdminUtils.adminApiCall(apiUrl, {
+                    method: 'PATCH',
+                    body: JSON.stringify({
+                        status: newStatus
+                    })
+                });
+                
+                const responseText = await response.text();
+                let data;
+                
+                try {
+                    data = JSON.parse(responseText);
+                } catch (e) {
+                    if (response.ok) {
+                        // Success even without JSON response
+                        loadOrders();
+                        return;
+                    }
+                    throw new Error(responseText || `Server returned ${response.status} ${response.statusText}`);
+                }
+                
+                if (response.ok) {
+                    if (data.success === false) {
+                        throw new Error(data.message || 'Failed to update order status');
+                    }
+                    
+                    // Reload orders to show updated status
+                    loadOrders();
+                } else {
+                    throw new Error(data.message || `Server returned ${response.status} ${response.statusText}`);
+                }
+            } catch (error) {
+                console.error('Error updating order status:', error);
+                alert('Failed to update order status: ' + (error.message || 'Please try again.'));
+            } finally {
+                updateBtn.disabled = false;
+                statusSelect.disabled = false;
+                updateBtn.innerHTML = originalText;
             }
         }
     </script>

@@ -36,20 +36,21 @@
     </div>
 </div>
 
-<!-- Delete Order Confirmation Modal -->
-<div class="modal fade" id="deleteOrderModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-danger text-white">
-                <h5 class="modal-title"><i class="bi bi-exclamation-triangle me-2"></i>Cancel Order</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+<!-- Delete Order Confirmation - Inline Alert Style -->
+<div id="deleteOrderConfirm" class="position-fixed top-0 start-0 w-100 h-100" style="display: none; z-index: 9999; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);">
+    <div class="d-flex align-items-center justify-content-center h-100">
+        <div class="card shadow-lg border-0" style="max-width: 400px; width: 90%; border-radius: 16px; overflow: hidden;">
+            <div class="card-header bg-danger text-white py-3">
+                <h5 class="mb-0"><i class="bi bi-exclamation-triangle me-2"></i>Cancel Order</h5>
             </div>
-            <div class="modal-body">
-                <p>Are you sure you want to cancel this order?</p>
-                <p class="mb-0"><strong>Order ID:</strong> <span id="deleteOrderId"></span></p>
+            <div class="card-body p-4">
+                <p class="mb-3">Are you sure you want to cancel this order?</p>
+                <p class="mb-0"><strong>Order ID:</strong> <span id="deleteOrderId" class="text-muted"></span></p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, Keep</button>
+            <div class="card-footer bg-white border-0 d-flex gap-2 justify-content-end p-3">
+                <button type="button" class="btn btn-secondary" id="cancelDeleteBtn">
+                    <i class="bi bi-x me-1"></i>No, Keep
+                </button>
                 <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
                     <i class="bi bi-trash me-1"></i>Yes, Cancel Order
                 </button>
@@ -63,14 +64,17 @@
     const API_BASE_URL = 'https://feastfetchfunctionappk224626-fjfadrgzcgfwcqev.centralindia-01.azurewebsites.net/api';
     
     let orderToDelete = null;
-    let deleteModal = null;
     
-    // Helper function to clean up modal backdrop
-    function cleanupModalBackdrop() {
-        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-        document.body.classList.remove('modal-open');
-        document.body.style.overflow = '';
-        document.body.style.paddingRight = '';
+    // Show/hide the confirmation dialog
+    function showDeleteConfirm(show) {
+        const dialog = document.getElementById('deleteOrderConfirm');
+        if (show) {
+            dialog.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        } else {
+            dialog.style.display = 'none';
+            document.body.style.overflow = '';
+        }
     }
     
     // Load orders from localStorage and fetch details from API
@@ -224,13 +228,7 @@
     window.confirmDeleteOrder = function(orderId, orderSecret) {
         orderToDelete = { orderId, orderSecret };
         document.getElementById('deleteOrderId').textContent = orderId.substring(0, 8) + '...';
-        
-        // Get or create modal instance (don't create multiple instances)
-        const modalEl = document.getElementById('deleteOrderModal');
-        if (!deleteModal) {
-            deleteModal = new bootstrap.Modal(modalEl);
-        }
-        deleteModal.show();
+        showDeleteConfirm(true);
     };
     
     // Delete order
@@ -268,12 +266,8 @@
                 const updatedOrders = storedOrders.filter(o => o.orderId !== orderId && o.orderSecret !== orderSecret);
                 localStorage.setItem('orders', JSON.stringify(updatedOrders));
                 
-                // Close modal properly
-                if (deleteModal) {
-                    deleteModal.hide();
-                }
-                // Clean up any stuck backdrops
-                setTimeout(cleanupModalBackdrop, 300);
+                // Close dialog
+                showDeleteConfirm(false);
                 
                 // Reload orders
                 loadOrders();
@@ -291,10 +285,25 @@
     // Initialize
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('confirmDeleteBtn').addEventListener('click', deleteOrder);
+        document.getElementById('cancelDeleteBtn').addEventListener('click', function() {
+            showDeleteConfirm(false);
+            orderToDelete = null;
+        });
         
-        // Clean up modal backdrop when modal is hidden
-        document.getElementById('deleteOrderModal').addEventListener('hidden.bs.modal', function() {
-            cleanupModalBackdrop();
+        // Close on backdrop click
+        document.getElementById('deleteOrderConfirm').addEventListener('click', function(e) {
+            if (e.target === this) {
+                showDeleteConfirm(false);
+                orderToDelete = null;
+            }
+        });
+        
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('deleteOrderConfirm').style.display === 'block') {
+                showDeleteConfirm(false);
+                orderToDelete = null;
+            }
         });
         
         loadOrders();

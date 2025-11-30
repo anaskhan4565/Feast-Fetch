@@ -6,7 +6,7 @@
 
 <div class="page-header text-white text-center">
     <div class="container">
-        <h1 class="display-3 fw-bold"><i class="bi bi-credit-card me-3"></i>Checkout</h1>
+        <h1 class="display-3 fw-bold"><i class="bi bi-cash-coin me-3"></i>Checkout</h1>
         <p class="lead">Complete your order</p>
     </div>
 </div>
@@ -21,101 +21,54 @@
                     <h4 class="mb-0"><i class="bi bi-geo-alt me-2"></i>Delivery Details</h4>
                 </div>
                 <div class="card-body p-4">
-                    <form id="checkoutForm">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class="form-label fw-bold">Full Name</label>
-                                <input type="text" class="form-control form-control-lg" placeholder="John Doe" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label fw-bold">Phone Number</label>
-                                <input type="tel" class="form-control form-control-lg" placeholder="+1 (555) 123-4567" required>
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label fw-bold">Delivery Address</label>
-                                <input type="text" class="form-control form-control-lg" placeholder="123 Main Street" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label fw-bold">City</label>
-                                <input type="text" class="form-control form-control-lg" placeholder="New York" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label fw-bold">ZIP Code</label>
-                                <input type="text" class="form-control form-control-lg" placeholder="10001" required>
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label fw-bold">Delivery Instructions (Optional)</label>
-                                <textarea class="form-control" rows="3" placeholder="Ring the doorbell, Leave at door, etc."></textarea>
-                            </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Full Name</label>
+                            <input type="text" class="form-control form-control-lg" id="customerName" placeholder="John Doe" required>
                         </div>
-                    </form>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Phone Number</label>
+                            <input type="tel" class="form-control form-control-lg" id="customerPhone" placeholder="+1 (555) 123-4567" required>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-bold">Delivery Address</label>
+                            <input type="text" class="form-control form-control-lg" id="deliveryAddress" placeholder="123 Main Street" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">City</label>
+                            <input type="text" class="form-control form-control-lg" id="city" placeholder="New York" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">ZIP Code</label>
+                            <input type="text" class="form-control form-control-lg" id="zipCode" placeholder="10001" required>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-bold">Delivery Instructions (Optional)</label>
+                            <textarea class="form-control" id="deliveryNotes" rows="3" placeholder="Ring the doorbell, Leave at door, etc."></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Payment Method -->
             <div class="card shadow-lg border-0 mb-4">
                 <div class="card-header bg-success text-white">
-                    <h4 class="mb-0"><i class="bi bi-wallet2 me-2"></i>Payment Method</h4>
+                    <h4 class="mb-0"><i class="bi bi-cash-coin me-2"></i>Payment Method</h4>
                 </div>
                 <div class="card-body p-4">
                     <div class="payment-methods">
-                        <div class="payment-option active" onclick="selectPaymentMethod(this, 'card')">
-                            <i class="bi bi-credit-card-2-front payment-icon"></i>
-                            <div class="payment-details">
-                                <strong>Credit/Debit Card</strong>
-                                <p class="mb-0 text-muted small">Visa, MasterCard, AmEx</p>
-                            </div>
-                            <i class="bi bi-check-circle check-icon"></i>
-                        </div>
-
-                        <div class="payment-option" onclick="selectPaymentMethod(this, 'paypal')">
-                            <i class="bi bi-paypal payment-icon"></i>
-                            <div class="payment-details">
-                                <strong>PayPal</strong>
-                                <p class="mb-0 text-muted small">Fast & Secure</p>
-                            </div>
-                            <i class="bi bi-check-circle check-icon"></i>
-                        </div>
-
-                        <div class="payment-option" onclick="selectPaymentMethod(this, 'wallet')">
-                            <i class="bi bi-wallet payment-icon"></i>
-                            <div class="payment-details">
-                                <strong>Digital Wallet</strong>
-                                <p class="mb-0 text-muted small">Apple Pay, Google Pay</p>
-                            </div>
-                            <i class="bi bi-check-circle check-icon"></i>
-                        </div>
-
-                        <div class="payment-option" onclick="selectPaymentMethod(this, 'cash')">
+                        <div class="payment-option active">
                             <i class="bi bi-cash payment-icon"></i>
                             <div class="payment-details">
                                 <strong>Cash on Delivery</strong>
-                                <p class="mb-0 text-muted small">Pay when you receive</p>
+                                <p class="mb-0 text-muted small">Pay when you receive your order</p>
                             </div>
                             <i class="bi bi-check-circle check-icon"></i>
                         </div>
                     </div>
-
-                    <!-- Card Details (shown when card is selected) -->
-                    <div id="cardDetails" class="mt-4">
-                        <div class="row g-3">
-                            <div class="col-12">
-                                <label class="form-label fw-bold">Card Number</label>
-                                <input type="text" class="form-control form-control-lg" placeholder="1234 5678 9012 3456" maxlength="19">
-                            </div>
-                            <div class="col-md-8">
-                                <label class="form-label fw-bold">Expiry Date</label>
-                                <input type="text" class="form-control form-control-lg" placeholder="MM/YY" maxlength="5">
-                            </div>
-                            <div class="col-md-4">
-                                <label class="form-label fw-bold">CVV</label>
-                                <input type="text" class="form-control form-control-lg" placeholder="123" maxlength="3">
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label fw-bold">Card Holder Name</label>
-                                <input type="text" class="form-control form-control-lg" placeholder="JOHN DOE">
-                            </div>
-                        </div>
+                    <div class="alert alert-info mt-3 mb-0">
+                        <i class="bi bi-info-circle me-2"></i>
+                        <strong>Note:</strong> Payment will be collected in cash when your order is delivered.
                     </div>
                 </div>
             </div>
@@ -129,7 +82,7 @@
                 </div>
                 <div class="card-body p-4">
                     <div id="orderItems" class="mb-3">
-                        <!-- Order items will be inserted here -->
+                        <p class="text-muted">Loading cart items...</p>
                     </div>
                     
                     <hr>
@@ -140,11 +93,11 @@
                     </div>
                     <div class="summary-row">
                         <span>Delivery Fee</span>
-                        <span>$2.99</span>
+                        <span id="deliveryFeeDisplay">$2.99</span>
                     </div>
                     <div class="summary-row">
                         <span>Service Fee</span>
-                        <span>$1.50</span>
+                        <span id="serviceFeeDisplay">$1.50</span>
                     </div>
                     <div class="summary-row">
                         <span>Tax (10%)</span>
@@ -156,14 +109,14 @@
                         <span class="fw-bold fs-5" id="total">$0.00</span>
                     </div>
                     
-                    <button class="btn btn-success btn-lg w-100 mt-4" onclick="placeOrder()">
+                    <button type="button" class="btn btn-success btn-lg w-100 mt-4" id="placeOrderBtn">
                         <i class="bi bi-check-circle me-2"></i>Place Order
                     </button>
                     
                     <div class="text-center mt-3">
                         <small class="text-muted">
-                            <i class="bi bi-shield-check me-1"></i>
-                            Your payment information is secure
+                            <i class="bi bi-cash-coin me-1"></i>
+                            Payment will be collected upon delivery
                         </small>
                     </div>
                 </div>
@@ -184,78 +137,213 @@
     </div>
 </div>
 
-@section Scripts {
-    <script>
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const deliveryFee = 2.99;
-        const serviceFee = 1.50;
-        const taxRate = 0.10;
-        let selectedPaymentMethod = 'card';
+<script>
+    // Self-executing function to avoid any scope issues
+    (function() {
+        'use strict';
         
+        const API_BASE_URL = window.API_BASE_URL || 'https://feastfetchfunctionappk224626-fjfadrgzcgfwcqev.centralindia-01.azurewebsites.net/api';
+        const DELIVERY_FEE = 2.99;
+        const SERVICE_FEE = 1.50;
+        const TAX_RATE = 0.10;
+        
+        // Get cart from localStorage
+        function getCart() {
+            try {
+                const cartStr = localStorage.getItem('cart');
+                console.log('Raw cart from localStorage:', cartStr);
+                if (!cartStr) return [];
+                const cart = JSON.parse(cartStr);
+                console.log('Parsed cart:', cart);
+                return Array.isArray(cart) ? cart : [];
+            } catch (e) {
+                console.error('Error parsing cart:', e);
+                return [];
+            }
+        }
+        
+        // Load and display order summary
         function loadOrderSummary() {
+            console.log('Loading order summary...');
+            const cart = getCart();
             const orderItemsContainer = document.getElementById('orderItems');
             
-            if (cart.length === 0) {
-                window.location.href = '/Cart';
+            if (!cart || cart.length === 0) {
+                console.log('Cart is empty');
+                orderItemsContainer.innerHTML = '<p class="text-danger">Your cart is empty. <a href="/Menu">Go to Menu</a></p>';
+                document.getElementById('placeOrderBtn').disabled = true;
                 return;
             }
             
-            orderItemsContainer.innerHTML = cart.map(item => `
-                <div class="order-summary-item">
-                    <span>${item.quantity}x ${item.name}</span>
-                    <span>$${(item.price * item.quantity).toFixed(2)}</span>
-                </div>
-            `).join('');
+            // Render items
+            let html = '';
+            let subtotal = 0;
             
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const tax = subtotal * taxRate;
-            const total = subtotal + deliveryFee + serviceFee + tax;
+            cart.forEach(function(item) {
+                const price = parseFloat(item.price) || 0;
+                const quantity = parseInt(item.quantity) || 1;
+                const itemTotal = price * quantity;
+                subtotal += itemTotal;
+                
+                html += '<div class="order-summary-item d-flex justify-content-between mb-2">';
+                html += '<span>' + quantity + 'x ' + (item.name || 'Item') + '</span>';
+                html += '<span>$' + itemTotal.toFixed(2) + '</span>';
+                html += '</div>';
+            });
             
-            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
-            document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
-            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+            orderItemsContainer.innerHTML = html;
+            
+            // Calculate totals
+            const tax = subtotal * TAX_RATE;
+            const total = subtotal + DELIVERY_FEE + SERVICE_FEE + tax;
+            
+            console.log('Subtotal:', subtotal, 'Tax:', tax, 'Total:', total);
+            
+            // Update display
+            document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
+            document.getElementById('tax').textContent = '$' + tax.toFixed(2);
+            document.getElementById('total').textContent = '$' + total.toFixed(2);
         }
         
-        function selectPaymentMethod(element, method) {
-            document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('active'));
-            element.classList.add('active');
-            selectedPaymentMethod = method;
+        // Place order function
+        async function placeOrder() {
+            console.log('=== Place Order Clicked ===');
             
-            // Show/hide card details
-            const cardDetails = document.getElementById('cardDetails');
-            if (method === 'card') {
-                cardDetails.style.display = 'block';
+            const cart = getCart();
+            if (!cart || cart.length === 0) {
+                alert('Your cart is empty!');
+                window.location.href = '/Menu';
+                return;
+            }
+            
+            // Get form values
+            const customerName = document.getElementById('customerName').value.trim();
+            const customerPhone = document.getElementById('customerPhone').value.trim();
+            const deliveryNotes = document.getElementById('deliveryNotes').value.trim();
+            
+            console.log('Customer:', customerName, customerPhone);
+            
+            // Validate
+            if (!customerName) {
+                alert('Please enter your name');
+                document.getElementById('customerName').focus();
+                return;
+            }
+            if (!customerPhone) {
+                alert('Please enter your phone number');
+                document.getElementById('customerPhone').focus();
+                return;
+            }
+            
+            // Build order payload
+            const orderPayload = {
+                items: cart.map(function(item) {
+                    return {
+                        id: item.id,
+                        quantity: parseInt(item.quantity) || 1
+                    };
+                }),
+                customer: {
+                    name: customerName,
+                    phone: customerPhone
+                },
+                notes: deliveryNotes || undefined
+            };
+            
+            console.log('Order payload:', JSON.stringify(orderPayload, null, 2));
+            
+            // Update button state
+            const btn = document.getElementById('placeOrderBtn');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Placing Order...';
+            
+            try {
+                console.log('Sending to:', API_BASE_URL + '/order');
+                
+                const response = await fetch(API_BASE_URL + '/order', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(orderPayload)
+                });
+                
+                console.log('Response status:', response.status);
+                
+                const responseText = await response.text();
+                console.log('Response body:', responseText);
+                
+                if (!response.ok) {
+                    throw new Error('Server error: ' + response.status + ' - ' + responseText);
+                }
+                
+                const result = JSON.parse(responseText);
+                console.log('Parsed result:', result);
+                
+                if (result.success && result.orderId && result.orderSecret) {
+                    // Save order to localStorage
+                    const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+                    orders.push({
+                        orderId: result.orderId,
+                        orderSecret: result.orderSecret,
+                        customerName: customerName,
+                        customerPhone: customerPhone,
+                        createdAt: new Date().toISOString(),
+                        status: 'pending',
+                        total: document.getElementById('total').textContent
+                    });
+                    localStorage.setItem('orders', JSON.stringify(orders));
+                    
+                    // Clear cart
+                    localStorage.removeItem('cart');
+                    
+                    // Redirect
+                    alert('Order placed successfully! Order ID: ' + result.orderId);
+                    window.location.href = '/Orders?success=true&orderId=' + result.orderId;
+                } else {
+                    throw new Error('Invalid server response');
+                }
+            } catch (error) {
+                console.error('Order error:', error);
+                alert('Failed to place order: ' + error.message);
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        }
+        
+        // Initialize when DOM is ready
+        function init() {
+            console.log('Checkout page initializing...');
+            
+            // Load order summary
+            loadOrderSummary();
+            
+            // Attach click handler to button
+            const btn = document.getElementById('placeOrderBtn');
+            if (btn) {
+                btn.onclick = function(e) {
+                    e.preventDefault();
+                    placeOrder();
+                    return false;
+                };
+                console.log('Button click handler attached');
             } else {
-                cardDetails.style.display = 'none';
+                console.error('Place order button not found!');
             }
         }
         
-        function placeOrder() {
-            const form = document.getElementById('checkoutForm');
-            
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
-            
-            // Simulate order placement
-            const orderNumber = Math.floor(100000 + Math.random() * 900000);
-            
-            // Clear cart
-            localStorage.removeItem('cart');
-            
-            // Redirect to orders page with success message
-            localStorage.setItem('lastOrder', JSON.stringify({
-                orderNumber: orderNumber,
-                timestamp: new Date().toISOString(),
-                total: document.getElementById('total').textContent
-            }));
-            
-            window.location.href = '/Orders?success=true&order=' + orderNumber;
+        // Run init when ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
         }
         
-        // Initialize
-        loadOrderSummary();
-    </script>
-}
+        // Expose placeOrder globally as backup
+        window.placeOrder = placeOrder;
+        
+    })();
+</script>
+
 

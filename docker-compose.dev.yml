@@ -13,7 +13,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:5000
     volumes:
-      # Mount source code for hot reload
+      # Mount source code for hot reload (including wwwroot for CSS/JS changes)
       - .:/app
       - /app/bin
       - /app/obj

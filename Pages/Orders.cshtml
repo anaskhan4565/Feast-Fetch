@@ -7,383 +7,297 @@
 <div class="page-header text-white text-center">
     <div class="container">
         <h1 class="display-3 fw-bold"><i class="bi bi-box-seam me-3"></i>My Orders</h1>
-        <p class="lead">Track and view your order history</p>
+        <p class="lead">View your order details</p>
     </div>
 </div>
 
 <div class="container py-5">
-    <!-- Success Message -->
-    <div id="successMessage" class="alert alert-success alert-dismissible fade show shadow-lg" role="alert" style="display: none;">
-        <div class="d-flex align-items-center">
-            <i class="bi bi-check-circle-fill fs-1 me-3"></i>
-            <div>
-                <h4 class="alert-heading mb-1">Order Placed Successfully!</h4>
-                <p class="mb-0">Your order <strong>#<span id="orderNumberDisplay"></span></strong> has been confirmed and is being prepared.</p>
-            </div>
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
         </div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <p class="mt-3 text-muted">Loading orders...</p>
     </div>
 
-    <!-- Active Orders -->
-    <div class="mb-5">
-        <h2 class="mb-4"><i class="bi bi-lightning-fill text-warning me-2"></i>Active Orders</h2>
-        
-        <div class="row g-4">
-            <!-- Order 1 - In Progress -->
-            <div class="col-lg-6">
-                <div class="order-card active-order">
-                    <div class="order-header">
-                        <div>
-                            <h4 class="order-number">Order #<span id="liveOrderNumber">847592</span></h4>
-                            <p class="order-date mb-0">
-                                <i class="bi bi-clock-history me-1"></i>
-                                <span id="orderTime">Just now</span>
-                            </p>
-                        </div>
-                        <span class="order-status-badge preparing">
-                            <i class="bi bi-hourglass-split me-1"></i>Preparing
-                        </span>
-                    </div>
-                    
-                    <div class="order-restaurant">
-                        <div class="restaurant-logo-small">
-                            <i class="bi bi-egg-fried"></i>
-                        </div>
-                        <div>
-                            <strong>The Gourmet Kitchen</strong>
-                            <p class="mb-0 text-muted small">Italian, Continental</p>
-                        </div>
-                    </div>
-
-                    <!-- Order Tracking -->
-                    <div class="order-tracking">
-                        <div class="tracking-step completed">
-                            <div class="step-icon"><i class="bi bi-check"></i></div>
-                            <div class="step-content">
-                                <strong>Order Placed</strong>
-                                <small class="text-muted d-block">Your order has been received</small>
-                            </div>
-                        </div>
-                        <div class="tracking-step active">
-                            <div class="step-icon"><i class="bi bi-fire"></i></div>
-                            <div class="step-content">
-                                <strong>Preparing</strong>
-                                <small class="text-muted d-block">Your food is being prepared</small>
-                            </div>
-                        </div>
-                        <div class="tracking-step">
-                            <div class="step-icon"><i class="bi bi-truck"></i></div>
-                            <div class="step-content">
-                                <strong>On the Way</strong>
-                                <small class="text-muted d-block">Driver will pick up soon</small>
-                            </div>
-                        </div>
-                        <div class="tracking-step">
-                            <div class="step-icon"><i class="bi bi-house-door"></i></div>
-                            <div class="step-content">
-                                <strong>Delivered</strong>
-                                <small class="text-muted d-block">Enjoy your meal!</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="order-footer">
-                        <div class="order-total">
-                            <span class="text-muted">Total Amount</span>
-                            <strong class="fs-5" id="liveOrderTotal">$0.00</strong>
-                        </div>
-                        <button class="btn btn-outline-primary">
-                            <i class="bi bi-telephone me-1"></i>Contact Driver
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Order 2 - Out for Delivery -->
-            <div class="col-lg-6">
-                <div class="order-card active-order">
-                    <div class="order-header">
-                        <div>
-                            <h4 class="order-number">Order #847591</h4>
-                            <p class="order-date mb-0">
-                                <i class="bi bi-clock-history me-1"></i>
-                                25 minutes ago
-                            </p>
-                        </div>
-                        <span class="order-status-badge delivery">
-                            <i class="bi bi-truck me-1"></i>On the Way
-                        </span>
-                    </div>
-                    
-                    <div class="order-restaurant">
-                        <div class="restaurant-logo-small" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                            <i class="bi bi-cup-hot"></i>
-                        </div>
-                        <div>
-                            <strong>Spice Paradise</strong>
-                            <p class="mb-0 text-muted small">Indian, Asian</p>
-                        </div>
-                    </div>
-
-                    <div class="delivery-driver-info">
-                        <div class="driver-avatar">
-                            <i class="bi bi-person-circle"></i>
-                        </div>
-                        <div class="driver-details">
-                            <strong>John Smith</strong>
-                            <p class="mb-0 text-muted small">
-                                <i class="bi bi-star-fill text-warning"></i> 4.9 • 500+ deliveries
-                            </p>
-                        </div>
-                        <div class="driver-actions">
-                            <button class="btn btn-sm btn-primary rounded-circle">
-                                <i class="bi bi-telephone"></i>
-                            </button>
-                            <button class="btn btn-sm btn-success rounded-circle ms-2">
-                                <i class="bi bi-chat-dots"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="delivery-eta">
-                        <i class="bi bi-geo-alt-fill text-danger me-2"></i>
-                        <strong>Arrives in 10-15 minutes</strong>
-                        <div class="progress mt-2">
-                            <div class="progress-bar bg-success" style="width: 75%"></div>
-                        </div>
-                    </div>
-
-                    <div class="order-footer">
-                        <div class="order-total">
-                            <span class="text-muted">Total Amount</span>
-                            <strong class="fs-5">$42.49</strong>
-                        </div>
-                        <button class="btn btn-outline-danger">
-                            <i class="bi bi-x-circle me-1"></i>Cancel Order
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- No Orders Message -->
+    <div id="noOrders" class="text-center py-5" style="display: none;">
+        <i class="bi bi-inbox display-1 text-muted"></i>
+        <h3 class="mt-3 text-muted">No orders found</h3>
+        <p class="text-muted">You haven't placed any orders yet</p>
+        <a href="/Menu" class="btn btn-primary mt-3">
+            <i class="bi bi-plus-circle me-2"></i>Browse Menu
+        </a>
     </div>
 
-    <!-- Order History -->
-    <div>
-        <h2 class="mb-4"><i class="bi bi-clock-history text-primary me-2"></i>Order History</h2>
-        
-        <div class="row g-4">
-            <!-- Past Order 1 -->
-            <div class="col-lg-6">
-                <div class="order-card">
-                    <div class="order-header">
-                        <div>
-                            <h4 class="order-number">Order #847590</h4>
-                            <p class="order-date mb-0">
-                                <i class="bi bi-calendar me-1"></i>
-                                2 days ago
-                            </p>
-                        </div>
-                        <span class="order-status-badge delivered">
-                            <i class="bi bi-check-circle me-1"></i>Delivered
-                        </span>
-                    </div>
-                    
-                    <div class="order-restaurant">
-                        <div class="restaurant-logo-small" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                            <i class="bi bi-balloon-heart"></i>
-                        </div>
-                        <div>
-                            <strong>Burger Haven</strong>
-                            <p class="mb-0 text-muted small">American, Fast Food</p>
-                        </div>
-                    </div>
+    <!-- Orders Container -->
+    <div id="ordersContainer" class="row g-4" style="display: none;">
+        <!-- Orders will be loaded here -->
+    </div>
+</div>
 
-                    <div class="order-items">
-                        <div class="order-item">
-                            <span>2x Classic Burger</span>
-                            <span>$18.98</span>
-                        </div>
-                        <div class="order-item">
-                            <span>1x Fries</span>
-                            <span>$4.99</span>
-                        </div>
-                        <div class="order-item">
-                            <span>2x Coke</span>
-                            <span>$5.98</span>
-                        </div>
-                    </div>
-
-                    <div class="order-footer">
-                        <div class="order-total">
-                            <span class="text-muted">Total Amount</span>
-                            <strong class="fs-5">$34.94</strong>
-                        </div>
-                        <div>
-                            <button class="btn btn-outline-primary me-2">
-                                <i class="bi bi-star me-1"></i>Rate
-                            </button>
-                            <button class="btn btn-primary">
-                                <i class="bi bi-arrow-clockwise me-1"></i>Reorder
-                            </button>
-                        </div>
-                    </div>
-                </div>
+<!-- Delete Order Confirmation Modal -->
+<div class="modal fade" id="deleteOrderModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title"><i class="bi bi-exclamation-triangle me-2"></i>Cancel Order</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
-
-            <!-- Past Order 2 -->
-            <div class="col-lg-6">
-                <div class="order-card">
-                    <div class="order-header">
-                        <div>
-                            <h4 class="order-number">Order #847589</h4>
-                            <p class="order-date mb-0">
-                                <i class="bi bi-calendar me-1"></i>
-                                5 days ago
-                            </p>
-                        </div>
-                        <span class="order-status-badge delivered">
-                            <i class="bi bi-check-circle me-1"></i>Delivered
-                        </span>
-                    </div>
-                    
-                    <div class="order-restaurant">
-                        <div class="restaurant-logo-small" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                            <i class="bi bi-brightness-high"></i>
-                        </div>
-                        <div>
-                            <strong>Sushi Master</strong>
-                            <p class="mb-0 text-muted small">Japanese, Sushi</p>
-                        </div>
-                    </div>
-
-                    <div class="order-items">
-                        <div class="order-item">
-                            <span>1x Sushi Platter</span>
-                            <span>$34.99</span>
-                        </div>
-                        <div class="order-item">
-                            <span>1x Miso Soup</span>
-                            <span>$5.99</span>
-                        </div>
-                        <div class="order-item">
-                            <span>1x Green Tea</span>
-                            <span>$3.99</span>
-                        </div>
-                    </div>
-
-                    <div class="order-footer">
-                        <div class="order-total">
-                            <span class="text-muted">Total Amount</span>
-                            <strong class="fs-5">$49.96</strong>
-                        </div>
-                        <div>
-                            <button class="btn btn-outline-primary me-2">
-                                <i class="bi bi-star me-1"></i>Rate
-                            </button>
-                            <button class="btn btn-primary">
-                                <i class="bi bi-arrow-clockwise me-1"></i>Reorder
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="modal-body">
+                <p>Are you sure you want to cancel this order?</p>
+                <p class="mb-0"><strong>Order ID:</strong> <span id="deleteOrderId"></span></p>
             </div>
-
-            <!-- Past Order 3 -->
-            <div class="col-lg-6">
-                <div class="order-card">
-                    <div class="order-header">
-                        <div>
-                            <h4 class="order-number">Order #847588</h4>
-                            <p class="order-date mb-0">
-                                <i class="bi bi-calendar me-1"></i>
-                                1 week ago
-                            </p>
-                        </div>
-                        <span class="order-status-badge delivered">
-                            <i class="bi bi-check-circle me-1"></i>Delivered
-                        </span>
-                    </div>
-                    
-                    <div class="order-restaurant">
-                        <div class="restaurant-logo-small" style="background: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);">
-                            <i class="bi bi-tree"></i>
-                        </div>
-                        <div>
-                            <strong>Green Leaf Cafe</strong>
-                            <p class="mb-0 text-muted small">Healthy, Vegan</p>
-                        </div>
-                    </div>
-
-                    <div class="order-items">
-                        <div class="order-item">
-                            <span>1x Quinoa Bowl</span>
-                            <span>$12.99</span>
-                        </div>
-                        <div class="order-item">
-                            <span>1x Smoothie</span>
-                            <span>$7.99</span>
-                        </div>
-                    </div>
-
-                    <div class="order-footer">
-                        <div class="order-total">
-                            <span class="text-muted">Total Amount</span>
-                            <strong class="fs-5">$25.97</strong>
-                        </div>
-                        <div>
-                            <button class="btn btn-outline-primary me-2">
-                                <i class="bi bi-star me-1"></i>Rate
-                            </button>
-                            <button class="btn btn-primary">
-                                <i class="bi bi-arrow-clockwise me-1"></i>Reorder
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, Keep</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+                    <i class="bi bi-trash me-1"></i>Yes, Cancel Order
+                </button>
             </div>
         </div>
     </div>
 </div>
 
-@section Scripts {
-    <script>
-        // Check for success parameter
-        const urlParams = new URLSearchParams(window.location.search);
-        const success = urlParams.get('success');
-        const orderNumber = urlParams.get('order');
+<script>
+(function() {
+    const API_BASE_URL = 'https://feastfetchfunctionappk224626-fjfadrgzcgfwcqev.centralindia-01.azurewebsites.net/api';
+    
+    let orderToDelete = null;
+    let deleteModal = null;
+    
+    // Helper function to clean up modal backdrop
+    function cleanupModalBackdrop() {
+        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+    }
+    
+    // Load orders from localStorage and fetch details from API
+    async function loadOrders() {
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const noOrders = document.getElementById('noOrders');
+        const ordersContainer = document.getElementById('ordersContainer');
         
-        if (success && orderNumber) {
-            document.getElementById('successMessage').style.display = 'block';
-            document.getElementById('orderNumberDisplay').textContent = orderNumber;
-            document.getElementById('liveOrderNumber').textContent = orderNumber;
-            
-            // Load order total from storage
-            const lastOrder = JSON.parse(localStorage.getItem('lastOrder'));
-            if (lastOrder) {
-                document.getElementById('liveOrderTotal').textContent = lastOrder.total;
-            }
-            
-            // Auto-dismiss after 10 seconds
-            setTimeout(() => {
-                document.getElementById('successMessage').style.display = 'none';
-                // Clean URL
-                window.history.replaceState({}, document.title, '/Orders');
-            }, 10000);
+        // Get stored orders (with secrets)
+        const storedOrders = JSON.parse(localStorage.getItem('orders') || '[]');
+        console.log('Stored orders:', storedOrders);
+        
+        if (!storedOrders || storedOrders.length === 0) {
+            loadingIndicator.style.display = 'none';
+            noOrders.style.display = 'block';
+            ordersContainer.style.display = 'none';
+            return;
         }
         
-        // Simulate order time updating
-        let orderTime = 0;
-        setInterval(() => {
-            orderTime++;
-            const minutes = Math.floor(orderTime / 60);
-            const seconds = orderTime % 60;
-            
-            if (minutes === 0) {
-                document.getElementById('orderTime').textContent = `${seconds} seconds ago`;
-            } else {
-                document.getElementById('orderTime').textContent = `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+        // Fetch details for each order from API
+        const orderDetailsPromises = storedOrders.map(async (storedOrder) => {
+            try {
+                const secret = storedOrder.orderSecret;
+                if (!secret) {
+                    console.log('No secret for order:', storedOrder);
+                    return null;
+                }
+                
+                console.log('Fetching order with secret:', secret);
+                const response = await fetch(`${API_BASE_URL}/order?secret=${encodeURIComponent(secret)}`);
+                
+                if (!response.ok) {
+                    console.error('Failed to fetch order:', response.status);
+                    return null;
+                }
+                
+                const result = await response.json();
+                console.log('Order API response:', result);
+                
+                if (result.success && result.order) {
+                    return {
+                        ...result.order,
+                        orderSecret: secret // Keep the secret for delete
+                    };
+                }
+                return null;
+            } catch (error) {
+                console.error('Error fetching order:', error);
+                return null;
             }
-        }, 1000);
-    </script>
-}
-
+        });
+        
+        const orders = (await Promise.all(orderDetailsPromises)).filter(o => o !== null);
+        console.log('Fetched orders:', orders);
+        
+        loadingIndicator.style.display = 'none';
+        
+        if (orders.length === 0) {
+            noOrders.style.display = 'block';
+            ordersContainer.style.display = 'none';
+            return;
+        }
+        
+        // Render orders
+        ordersContainer.style.display = 'flex';
+        noOrders.style.display = 'none';
+        ordersContainer.innerHTML = orders.map(order => renderOrderCard(order)).join('');
+    }
+    
+    function renderOrderCard(order) {
+        const statusColor = order.status === 'delivered' || order.status === 'completed' ? 'success' : 
+                           order.status === 'cancelled' ? 'danger' : 'warning';
+        
+        // Render items
+        let itemsHtml = '';
+        let itemsTotal = 0;
+        
+        if (order.items && order.items.length > 0) {
+            itemsHtml = order.items.map(item => {
+                const price = parseFloat(item.price) || 0;
+                const qty = parseInt(item.quantity) || 1;
+                const itemTotal = price * qty;
+                itemsTotal += itemTotal;
+                
+                return `
+                    <div class="d-flex align-items-center py-2 border-bottom">
+                        ${item.imageUrl ? 
+                            `<img src="${item.imageUrl}" alt="${item.name || 'Item'}" class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">` : 
+                            `<div class="bg-light rounded me-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;"><i class="bi bi-image text-muted"></i></div>`
+                        }
+                        <div class="flex-grow-1">
+                            <strong>${item.name || 'Item'}</strong>
+                            ${item.description ? `<p class="mb-0 text-muted small">${item.description}</p>` : ''}
+                            <small class="text-muted">Qty: ${qty} × $${price.toFixed(2)}</small>
+                        </div>
+                        <strong>$${itemTotal.toFixed(2)}</strong>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        return `
+            <div class="col-lg-6">
+                <div class="card shadow-lg border-0 h-100">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-0">Order #${order.id.substring(0, 8)}</h5>
+                            <small>${new Date(order.createdAt).toLocaleString()}</small>
+                        </div>
+                        <span class="badge bg-${statusColor} fs-6">${order.status}</span>
+                    </div>
+                    <div class="card-body">
+                        <!-- Customer Info -->
+                        <div class="mb-3">
+                            <h6 class="text-muted"><i class="bi bi-person me-2"></i>Customer</h6>
+                            <p class="mb-0"><strong>${order.customer.name}</strong></p>
+                            <p class="mb-0 text-muted">${order.customer.phone}</p>
+                        </div>
+                        
+                        <!-- Items -->
+                        <div class="mb-3">
+                            <h6 class="text-muted"><i class="bi bi-bag me-2"></i>Items</h6>
+                            ${itemsHtml || '<p class="text-muted">No items</p>'}
+                        </div>
+                        
+                        <!-- Total -->
+                        <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                            <strong>Total</strong>
+                            <strong class="fs-5 text-primary">$${itemsTotal.toFixed(2)}</strong>
+                        </div>
+                        
+                        ${order.notes ? `
+                            <div class="mt-3 p-2 bg-light rounded">
+                                <small class="text-muted"><i class="bi bi-sticky me-1"></i>Notes: ${order.notes}</small>
+                            </div>
+                        ` : ''}
+                    </div>
+                    ${order.status.toLowerCase() === 'pending' ? `
+                        <div class="card-footer bg-white border-0">
+                            <button class="btn btn-outline-danger w-100" onclick="confirmDeleteOrder('${order.id}', '${order.orderSecret}')">
+                                <i class="bi bi-x-circle me-1"></i>Cancel Order
+                            </button>
+                        </div>
+                    ` : ''}
+                </div>
+            </div>
+        `;
+    }
+    
+    // Confirm delete
+    window.confirmDeleteOrder = function(orderId, orderSecret) {
+        orderToDelete = { orderId, orderSecret };
+        document.getElementById('deleteOrderId').textContent = orderId.substring(0, 8) + '...';
+        
+        // Get or create modal instance (don't create multiple instances)
+        const modalEl = document.getElementById('deleteOrderModal');
+        if (!deleteModal) {
+            deleteModal = new bootstrap.Modal(modalEl);
+        }
+        deleteModal.show();
+    };
+    
+    // Delete order
+    async function deleteOrder() {
+        if (!orderToDelete) return;
+        
+        const { orderId, orderSecret } = orderToDelete;
+        const btn = document.getElementById('confirmDeleteBtn');
+        const originalText = btn.innerHTML;
+        
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span>Cancelling...';
+        
+        try {
+            console.log('Deleting order:', orderId, 'with secret:', orderSecret);
+            
+            const response = await fetch(`${API_BASE_URL}/order/${orderId}`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ secret: orderSecret })
+            });
+            
+            console.log('Delete response:', response.status);
+            
+            if (!response.ok) {
+                throw new Error('Failed to delete order');
+            }
+            
+            const result = await response.json();
+            console.log('Delete result:', result);
+            
+            if (result.success) {
+                // Remove from localStorage
+                const storedOrders = JSON.parse(localStorage.getItem('orders') || '[]');
+                const updatedOrders = storedOrders.filter(o => o.orderId !== orderId && o.orderSecret !== orderSecret);
+                localStorage.setItem('orders', JSON.stringify(updatedOrders));
+                
+                // Close modal properly
+                if (deleteModal) {
+                    deleteModal.hide();
+                }
+                // Clean up any stuck backdrops
+                setTimeout(cleanupModalBackdrop, 300);
+                
+                // Reload orders
+                loadOrders();
+            }
+        } catch (error) {
+            console.error('Error deleting order:', error);
+            alert('Failed to cancel order: ' + error.message);
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+            orderToDelete = null;
+        }
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('confirmDeleteBtn').addEventListener('click', deleteOrder);
+        
+        // Clean up modal backdrop when modal is hidden
+        document.getElementById('deleteOrderModal').addEventListener('hidden.bs.modal', function() {
+            cleanupModalBackdrop();
+        });
+        
+        loadOrders();
+    });
+})();
+</script>

@@ -6,8 +6,14 @@
 
 @section Scripts {
     <script>
-        // Clear current user
-        localStorage.removeItem('currentUser');
+        // Clear admin data using utility function
+        if (window.AdminUtils) {
+            AdminUtils.clearAdminData();
+        } else {
+            // Fallback if utility not loaded
+            localStorage.removeItem('currentUser');
+            localStorage.removeItem('adminSecretKey');
+        }
         
         // Redirect to home
         window.location.href = '/';

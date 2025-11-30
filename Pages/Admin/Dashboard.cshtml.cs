@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace FeastFetch.Pages;
+namespace FeastFetch.Pages.Admin;
 
-public class RestaurantsModel : PageModel
+public class DashboardModel : PageModel
 {
     public void OnGet()
     {

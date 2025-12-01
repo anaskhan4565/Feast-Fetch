@@ -69,7 +69,18 @@
                             <option value="Pizza">Pizza</option>
                             <option value="Cake">Cake</option>
                             <option value="Shakes">Shakes</option>
+
+                            <option value="Appetizer">Appetizer</option>
+                            <option value="Sandwiches">Sandwiches</option>
+                            <option value="Rolls">Rolls</option>
+                            <option value="Pasta">Pasta</option>
+                            <option value="Chinese">Chinese</option>
+                            <option value="BBQ">BBQ</option>
+                            <option value="Desi">Desi</option>
+                            <option value="Drinks">Drinks</option>
+                            <option value="Desserts">Desserts</option>
                         </select>
+
                     </div>
                 </div>
                 <div class="mb-3">
@@ -892,6 +903,12 @@
                                 <h6 class="text-muted"><i class="bi bi-person me-2"></i>Customer</h6>
                                 <p class="mb-0"><strong>${order.customer?.name || 'N/A'}</strong></p>
                                 <p class="mb-0 text-muted">${order.customer?.phone || 'N/A'}</p>
+                            </div>
+
+                            <!-- Delivery Address -->
+                            <div class="mb-3">
+                                <h6 class="text-muted"><i class="bi bi-person me-2"></i>Delivery Address</h6>
+                                <p class="mb-0"><strong>${order.deliveryAddress}</strong></p>
                             </div>
                             
                             <!-- Items -->

@@ -220,6 +220,11 @@
                             <p class="mb-0"><strong>${order.customer.name}</strong></p>
                             <p class="mb-0 text-muted">${order.customer.phone}</p>
                         </div>
+
+                        <div class="mb-3">
+                            <h6 class="text-muted"><i class="bi bi-person me-2"></i>Delivery Address</h6>
+                            <p class="mb-0"><strong>${order.deliveryAddress}</strong></p>
+                        </div>
                         
                         <!-- Items -->
                         <div class="mb-3">
@@ -362,6 +367,7 @@
                         customerPhone: result.order.customer.phone,
                         createdAt: result.order.createdAt,
                         status: result.order.status,
+                        deliveryAddress: result.order.deliveryAddress || '',
                         total: '$' + total.toFixed(2)
                     });
                     localStorage.setItem('orders', JSON.stringify(storedOrders));

@@ -12,6 +12,26 @@
 </div>
 
 <div class="container py-5">
+    <!-- Track Order Section -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-primary text-white py-2">
+            <h6 class="mb-0"><i class="bi bi-search me-2"></i>Track Your Order</h6>
+        </div>
+        <div class="card-body p-3">
+            <div class="row g-2 align-items-end">
+                <div class="col-md-8">
+                    <label class="form-label mb-1 small">Enter Order Tracking ID</label>
+                    <input type="text" class="form-control" id="trackingIdInput" placeholder="Enter tracking ID (e.g., 8, 9, 10...)">
+                </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-primary w-100" id="trackOrderBtn">
+                        <i class="bi bi-search me-1"></i>Track Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Loading Indicator -->
     <div id="loadingIndicator" class="text-center py-5">
         <div class="spinner-border text-primary" role="status">
@@ -187,6 +207,13 @@
                         <span class="badge bg-${statusColor} fs-6">${order.status}</span>
                     </div>
                     <div class="card-body">
+                        <!-- Tracking ID -->
+                        ${order.orderSecret ? `
+                            <div class="mb-3">
+                                <p class="text-muted mb-2"><i class="bi bi-hash me-2"></i>Tracking ID: <span class="mb-0 fs-6 fw-bold text-primary">${order.orderSecret}</span> </p>
+                            </div>
+                        ` : ''}
+                        
                         <!-- Customer Info -->
                         <div class="mb-3">
                             <h6 class="text-muted"><i class="bi bi-person me-2"></i>Customer</h6>
@@ -282,12 +309,99 @@
         }
     }
     
+    // Track order by tracking ID
+    async function trackOrderByTrackingId() {
+        const trackingInput = document.getElementById('trackingIdInput');
+        const trackingId = trackingInput.value.trim();
+        
+        if (!trackingId) {
+            alert('Please enter a tracking ID');
+            trackingInput.focus();
+            return;
+        }
+        
+        const btn = document.getElementById('trackOrderBtn');
+        const originalText = btn.innerHTML;
+        
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Tracking...';
+        
+        try {
+            console.log('Tracking order with ID:', trackingId);
+            
+            const response = await fetch(`${API_BASE_URL}/order?secret=${encodeURIComponent(trackingId)}`);
+            
+            if (!response.ok) {
+                throw new Error('Order not found');
+            }
+            
+            const result = await response.json();
+            console.log('Track order result:', result);
+            
+            if (result.success && result.order) {
+                // Check if order already exists in localStorage
+                const storedOrders = JSON.parse(localStorage.getItem('orders') || '[]');
+                const existingOrder = storedOrders.find(o => o.orderSecret === trackingId);
+                
+                if (!existingOrder) {
+                    // Calculate total from items
+                    let total = 0;
+                    if (result.order.items && result.order.items.length > 0) {
+                        total = result.order.items.reduce((sum, item) => {
+                            const price = parseFloat(item.price) || 0;
+                            const qty = parseInt(item.quantity) || 1;
+                            return sum + (price * qty);
+                        }, 0);
+                    }
+                    
+                    // Add new order to localStorage
+                    storedOrders.push({
+                        orderId: result.order.id,
+                        orderSecret: trackingId,
+                        customerName: result.order.customer.name,
+                        customerPhone: result.order.customer.phone,
+                        createdAt: result.order.createdAt,
+                        status: result.order.status,
+                        total: '$' + total.toFixed(2)
+                    });
+                    localStorage.setItem('orders', JSON.stringify(storedOrders));
+                    
+                    alert('Order found and added to your orders!');
+                } else {
+                    alert('This order is already in your orders list!');
+                }
+                
+                // Clear input and reload orders
+                trackingInput.value = '';
+                loadOrders();
+            } else {
+                throw new Error('Invalid response from server');
+            }
+        } catch (error) {
+            console.error('Error tracking order:', error);
+            alert('Order not found. Please check your tracking ID and try again.');
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+        }
+    }
+    
     // Initialize
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('confirmDeleteBtn').addEventListener('click', deleteOrder);
         document.getElementById('cancelDeleteBtn').addEventListener('click', function() {
             showDeleteConfirm(false);
             orderToDelete = null;
+        });
+        
+        // Track order button
+        document.getElementById('trackOrderBtn').addEventListener('click', trackOrderByTrackingId);
+        
+        // Track order on Enter key
+        document.getElementById('trackingIdInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                trackOrderByTrackingId();
+            }
         });
         
         // Close on backdrop click
